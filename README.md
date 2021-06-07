@@ -1,6 +1,11 @@
 # ui-input [![GitHub Actions status |pink-gorilla/ui-binary-clock](https://github.com/pink-gorilla/ui-input/workflows/CI/badge.svg)](https://github.com/pink-gorilla/ui-input/actions?workflow=CI)[![Clojars Project](https://img.shields.io/clojars/v/org.pinkgorilla/ui-input.svg)](https://clojars.org/org.pinkgorilla/ui-input)
 
-An example how to create a custom ui renderer for goldly.
+Input controls:
+- text
+- checkbox
+- button
+- slider
+- select
 
 ## Demo
 

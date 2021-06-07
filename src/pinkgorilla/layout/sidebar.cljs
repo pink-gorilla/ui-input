@@ -68,8 +68,6 @@
         ; Sidebar
        [sidebar-menu goto-page active? items]])))
 
-
-
 #_(defn example-menu [{:keys [name goto-page] :as example}]
     [:a {:href "#"
          :on-click #(goto-page example)

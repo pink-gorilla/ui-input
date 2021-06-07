@@ -34,6 +34,8 @@
 
 
 ; controls
+
+
 (register-component :p/button button)
 
 ; text
@@ -43,7 +45,6 @@
 
 (def checkbox-a (bind checkbox))
 (register-component :p/checkbox checkbox-a)
-
 
 (def select-a (bind select-nav))
 (register-component :p/select select-a)
@@ -57,6 +58,7 @@
 
 
 ; layout
+
 
 (register-component :p/gridlayout gridlayout)
 (register-component :p/panel panel)

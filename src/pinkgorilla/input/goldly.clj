@@ -9,6 +9,7 @@
 
 ; control
 
+
 (add-snippet {:type :goldly
               :category :input
               :id :text
@@ -53,9 +54,9 @@
               :filename "snippets/layout/tab1.edn"})
 
 #_(add-snippet {:type :pinkie
-              :category :layout
-              :id :tab2
-              :filename "snippets/layout/tab2.edn"})
+                :category :layout
+                :id :tab2
+                :filename "snippets/layout/tab2.edn"})
 
 (add-snippet {:type :pinkie
               :category :layout

@@ -1,7 +1,7 @@
 (ns pinkgorilla.layout.def-table
-  (:require 
+  (:require
    [cljs.spec.alpha :as s]
-            [reagent.core :as reagent]))
+   [reagent.core :as reagent]))
 
 ;; from: https://github.com/kishanov/reagent-definition-table/blob/master/src/def_table/core.cljs
 ;; https://medium.com/@kirill.ishanov/reagent-component-from-scratch-definition-table-5ad1d8825b87

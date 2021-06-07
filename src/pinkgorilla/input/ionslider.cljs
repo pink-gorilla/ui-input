@@ -21,13 +21,13 @@
         on-change-wrapped (fn [v]
                             (when on-change
                               (let [v-clj (js->clj v)
-                                    v2 (if range? 
+                                    v2 (if range?
                                          [(get v-clj "from") (get v-clj "to")]
-                                         (get v-clj "from")
-                                         )
-                                    ]
+                                         (get v-clj "from"))]
                                 ;(println "v: " v-clj)
                                 ;(println "v2: " v2)
+
+
                                 (on-change v2))))
         opts-ion {:on-change on-change-wrapped}
         opts-ion-value (if range?
