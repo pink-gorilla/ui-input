@@ -1,4 +1,4 @@
-# BinaryClock [![GitHub Actions status |pink-gorilla/ui-binary-clock](https://github.com/pink-gorilla/ui-binary-clock/workflows/CI/badge.svg)](https://github.com/pink-gorilla/ui-binary-clock/actions?workflow=CI)[![Clojars Project](https://img.shields.io/clojars/v/org.pinkgorilla/ui-binaryclock.svg)](https://clojars.org/org.pinkgorilla/ui-binaryclock)
+# ui-input [![GitHub Actions status |pink-gorilla/ui-binary-clock](https://github.com/pink-gorilla/ui-input/workflows/CI/badge.svg)](https://github.com/pink-gorilla/ui-input/actions?workflow=CI)[![Clojars Project](https://img.shields.io/clojars/v/org.pinkgorilla/ui-input.svg)](https://clojars.org/org.pinkgorilla/ui-input)
 
 An example how to create a custom ui renderer for goldly.
 
@@ -18,10 +18,10 @@ In deps.edn add quil as dependency and add goldly alias
 ```
 :goldly
   {:extra-deps {org.pinkgorilla/goldly {:mvn/version "RELEASE"}
-               {org.pinkgorilla/ui-binaryclock {:mvn/version "0.0.4"}}
+               {org.pinkgorilla/ui-input {:mvn/version "0.0.2"}}
    :exec-fn goldly-server.app/goldly-server-run!
    :exec-args {:profile "watch"
-               :config {:goldly {:extensions [[ui.binaryclock.goldly]
+               :config {:goldly {:extensions [[pinkgorilla.input.goldly]
                                               ]}}}}
 ```
 
