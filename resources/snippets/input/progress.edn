@@ -1,0 +1,9 @@
+[:p/panel {:title "panel with controls"}
+   [:h2 "progress bar"]
+   [:p/progressbar ]
+   [:p/progressbar 30]
+   [:p/progressbar 80]
+   [:p/progressbar 100]
+]
+
+

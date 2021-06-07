@@ -1,0 +1,12 @@
+{:id :slider-ion
+ :state {:a 3
+         :b [3 6]
+         :c 70000}
+ :html [:p/panel {:title "panel with controls"}
+        [:p/slider {:min 1 :max 10} state [:a]]
+        [:p/slider {:min 1 :max 10} state [:b]]
+        [:p/slider {:min 1000 :max 100000 :step 500} state [:c]]
+        [:h2 "state " (pr-str @state)]]
+ :fns {}
+ :fns-raw {}}
+
