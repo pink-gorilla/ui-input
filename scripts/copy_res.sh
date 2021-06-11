@@ -13,6 +13,6 @@ cpr () {
   fi
 }
 
-
+cpr "ion-rangeslider/css" "*.css"
 cpr "react-grid-layout/css" "*.css"
 cpr "react-resizable/css" "*.css"
