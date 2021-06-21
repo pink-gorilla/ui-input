@@ -4,7 +4,6 @@
    ["jquery" :as jq] ; jquery is a dependency, but it needs to be required separately.
    ["react-ion-slider" :as IonRangeSlider]))
 
-
 ; shiny: http://ionden.com/a/plugins/ion.rangeSlider/demo_interactions.html
 ; https://www.npmjs.com/package/react-ion-slider#1-before-using-react-ion-slider-please-import-module
 
@@ -13,7 +12,6 @@
 ; from= {} to= {} 
 ; step= {} 
 ; values= {} keyboard= {}
-
 
 (defn ^{:category :control}
   slider-ion [{:keys [on-change value] :as options}]
@@ -26,7 +24,6 @@
                                          (get v-clj "from"))]
                                 ;(println "v: " v-clj)
                                 ;(println "v2: " v2)
-
 
                                 (on-change v2))))
         opts-ion {:on-change on-change-wrapped}

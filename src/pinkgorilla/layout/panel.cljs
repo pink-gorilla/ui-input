@@ -3,7 +3,6 @@
 ; stolen from:
 ; https://github.com/knipferrc/tails-ui/blob/master/src/components/Panel.re
 
-
 (defn ^{:category :layout}
   panel
   "a panel displays a seq of components

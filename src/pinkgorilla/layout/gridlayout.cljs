@@ -4,7 +4,6 @@
 
 ; https://github.com/STRML/react-grid-layout
 
-
 (defn ^{:category :layout}
   gridlayout [data & children]
   [:<>

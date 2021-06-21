@@ -32,9 +32,7 @@
 
 (rf/dispatch [:css/add-components css/components css/config])
 
-
 ; controls
-
 
 (register-component :p/button button)
 
@@ -56,9 +54,7 @@
 
 (register-component :p/progressbar progressbar)
 
-
 ; layout
-
 
 (register-component :p/gridlayout gridlayout)
 (register-component :p/panel panel)

@@ -127,7 +127,5 @@
      [button {:on-click #(go-next value items on-change)} ">"]]
     [select opts]))
 
-
-
 ; https://www.creative-tim.com/learning-lab/tailwind-starter-kit/documentation/react/dropdown
 

@@ -8,7 +8,6 @@
 ; https://tailwindcomponents.com/component/app-sidebar
 ; https://github.com/creativetimofficial/tailwind-starter-kit/blob/master/Dashboard%20Page/react-dashboard-page/src/components/Sidebar.js
 
-
 (defn sidebar-menu-item [{:as item
                           :keys [name fas #_page active? goto-page]
                           :or {fas "link"}}]
