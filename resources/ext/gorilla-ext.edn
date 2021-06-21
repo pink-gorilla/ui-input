@@ -1,0 +1,68 @@
+{:name "ui-input"
+ :clj-require []
+ :cljs-namespace [pinkgorilla.input.goldly]
+ :cljs-bindings {}
+ :cljs-ns-bindings {}
+ ; css and pinkie not yet via loader
+ :css {:components  {:ionslider {true ["ion-rangeslider/css/ion.rangeSlider.min.css"]}
+                     :tailsui {true ["tails-ui/dist/index.css"]}
+                     :gridlayout {true ["react-grid-layout/css/styles.css"
+                                        "react-resizable/css/styles.css"]}}
+       :config {:ionslider true
+                :tailsui false
+                :gridlayout true}}
+ :pinkie {}
+ :snippets [;control
+            {:type :goldly
+             :category :input
+             :id :text
+             :filename "snippets/input/text.edn"}
+            {:type :goldly
+             :category :input
+             :id :checkbox
+             :filename "snippets/input/checkbox.edn"}
+            {:type :pinkie
+             :category :input
+             :id :button
+             :filename "snippets/input/button.edn"}
+            {:type :goldly
+             :category :input
+             :id :slider
+             :filename "snippets/input/slider.edn"}
+            {:type :goldly
+             :category :input
+             :id :slider-ion
+             :filename "snippets/input/slider_ion.edn"}
+            {:type :goldly
+             :category :input
+             :id :select
+             :filename "snippets/input/select.edn"}
+            {:type :pinkie
+             :category :input
+             :id :progress
+             :filename "snippets/input/progress.edn"}
+            ;; layout
+            {:type :pinkie
+             :category :layout
+             :id :tab1
+             :filename "snippets/layout/tab1.edn"}
+            #_{:type :pinkie
+               :category :layout
+               :id :tab2
+               :filename "snippets/layout/tab2.edn"}
+            {:type :pinkie
+             :category :layout
+             :id :gridlayout
+             :filename "snippets/layout/gridlayout.edn"}
+            {:type :goldly-clj
+             :category :layout
+             :id :dialog
+             :filename "snippets/layout/dialog.clj"}
+            {:type :pinkie
+             :category :layout
+             :id :popover
+             :filename "snippets/layout/popover.edn"}
+            {:type :pinkie
+             :category :layout
+             :id :description-box
+             :filename "snippets/layout/desc.edn"}]}
