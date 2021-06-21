@@ -41,7 +41,7 @@
   {:extra-deps {org.pinkgorilla/goldly {:mvn/version "RELEASE"}}
    :exec-fn goldly-server.app/goldly-server-run!
    :exec-args {:profile "watch"
-               :config {:goldly {:extensions [[pinkgorilla.input.goldly]]}}}}
+               :config {:goldly {:extensions []}}}}
 
  
 
