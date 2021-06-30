@@ -26,8 +26,7 @@ In deps.edn add quil as dependency and add goldly alias
                {org.pinkgorilla/ui-input {:mvn/version "0.0.2"}}
    :exec-fn goldly-server.app/goldly-server-run!
    :exec-args {:profile "watch"
-               :config {:goldly {:extensions [[pinkgorilla.input.goldly]
-                                              ]}}}}
+               :config {:goldly {}}}}
 ```
 
 
