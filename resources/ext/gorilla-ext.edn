@@ -27,10 +27,6 @@
              :filename "snippets/input/button.edn"}
             {:type :goldly
              :category :input
-             :id :slider
-             :filename "snippets/input/slider.edn"}
-            {:type :goldly
-             :category :input
              :id :slider-ion
              :filename "snippets/input/slider_ion.edn"}
             {:type :goldly
