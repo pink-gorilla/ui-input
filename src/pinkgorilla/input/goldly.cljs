@@ -1,13 +1,11 @@
 (ns pinkgorilla.input.goldly
   (:require
-   [re-frame.core :as rf]
 
    ; pinkie
    [pinkie.default-setup] ; side-effects
    [pinkie.pinkie :refer-macros [register-component]]
 
    ; helper fns
-   [pinkgorilla.input.css :as css]
    [pinkgorilla.input.bind :refer [bind]]
 
     ; input
@@ -29,8 +27,6 @@
 
 ;   
    ))
-
-(rf/dispatch [:css/add-components css/components css/config])
 
 ; controls
 
