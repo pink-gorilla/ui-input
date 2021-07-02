@@ -2,7 +2,13 @@
  :clj-require []
  :cljs-namespace [pinkgorilla.input.goldly]
  :cljs-bindings {}
- :cljs-ns-bindings {}
+ :cljs-ns-bindings {'input {'text pinkgorilla.input.goldly/input-a
+                            'select pinkgorilla.input.goldly/select-a
+                            'checkbox pinkgorilla.input.goldly/checkbox-a
+                            'slider  pinkgorilla.input.goldly/slider-ion-a
+                            'button pinkgorilla.input.button/button
+                            'progressbar pinkgorilla.input.progressbar/progressbar
+                            }}
  :theme {:available  {:ionslider {true ["ion-rangeslider/css/ion.rangeSlider.min.css"]}
                       :tailsui {true ["tails-ui/dist/index.css"]}
                       :gridlayout {true ["react-grid-layout/css/styles.css"
