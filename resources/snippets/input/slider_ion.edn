@@ -3,6 +3,8 @@
          :b [3 6]
          :c 70000}
  :html [:p/panel {:title "panel with controls"}
+        ; shiny equivalent:
+        ; sliderInput ("n", label = "Number of samples", min = 2, max = 1000, value = 100)
         [:p/slider {:min 1 :max 10} state [:a]]
         [:p/slider {:min 1 :max 10} state [:b]]
         [:p/slider {:min 1000 :max 100000 :step 500} state [:c]]
