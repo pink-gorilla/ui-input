@@ -1,14 +1,5 @@
 {:name "ui-input"
  :clj-require []
- :cljs-namespace [pinkgorilla.input.goldly]
- :cljs-bindings {}
- :cljs-ns-bindings {'input {'text pinkgorilla.input.goldly/input-a
-                            'select pinkgorilla.input.goldly/select-a
-                            'checkbox pinkgorilla.input.goldly/checkbox-a
-                            'slider  pinkgorilla.input.goldly/slider-ion-a
-                            'button pinkgorilla.input.button/button
-                            'progressbar pinkgorilla.input.progressbar/progressbar
-                            }}
  :theme {:available  {:ionslider {true ["ion-rangeslider/css/ion.rangeSlider.min.css"]}
                       :tailsui {true ["tails-ui/dist/index.css"]}
                       :gridlayout {true ["react-grid-layout/css/styles.css"
@@ -16,9 +7,59 @@
          :current {:ionslider true
                    :tailsui false
                    :gridlayout true}}
+ :cljs-namespace [pinkie.default-setup
+                  ; inut
 
- ; modules and pinkie not yet via loader
- :pinkie {}
+                  pinkgorilla.input.button
+                  pinkgorilla.input.progressbar
+                  pinkgorilla.input.bound
+
+                  ;layout
+                  pinkgorilla.layout.tab
+                  pinkgorilla.layout.gridlayout
+                  pinkgorilla.layout.sidebar
+                  ;pinkgorilla.layout.tailsui
+                  pinkgorilla.layout.popover
+                  pinkgorilla.layout.description-list
+                  pinkgorilla.layout.panel]
+ :cljs-bindings {}
+ :cljs-ns-bindings {'input {'button pinkgorilla.input.button/button
+                            'progressbar pinkgorilla.input.progressbar/progressbar
+                            ;input bound
+                            'text pinkgorilla.input.bound/input-a
+                            'select pinkgorilla.input.bound/select-a
+                            'checkbox pinkgorilla.input.bound/checkbox-a
+                            'slider  pinkgorilla.input.bound/slider-ion-a}
+                    'layout {'gridlayout pinkgorilla.layout.gridlayout/gridlayout
+                             'sidebar  pinkgorilla.layout.sidebar/sidebar
+                             'tab pinkgorilla.layout.tab/tab
+                             ;'tab pinkgorilla.layout.tailsui/tab
+                             ;'tabs pinkgorilla.layout.tailsui/tabs
+                             'tooltip pinkgorilla.layout.popover/tooltip
+                             'popover pinkgorilla.layout.popover/popover
+                             'description-list pinkgorilla.layout.description-list/description-list
+                             'panel pinkgorilla.layout.panel/panel}}
+
+ :pinkie {;input
+          :p/button pinkgorilla.input.button/button
+          :p/progressbar pinkgorilla.input.progressbar/progressbar
+          ;input bound
+          :p/input-a pinkgorilla.input.bound/input-a
+          :p/checkbox pinkgorilla.input.bound/checkbox-a
+          :p/select pinkgorilla.input.bound/select-a
+          :p/slider pinkgorilla.input.bound/slider-ion-a
+          ;layout
+          :p/gridlayout pinkgorilla.layout.gridlayout/gridlayout
+          :p/sidebar pinkgorilla.layout.sidebar/sidebar
+          :p/tab pinkgorilla.layout.tab/tab
+          ;:p/tab pinkgorilla.layout.tailsui/tab
+          ;:p/tabs pinkgorilla.layout.tailsui/tabs
+          :p/tooltip pinkgorilla.layout.popover/tooltip
+          :p/popover pinkgorilla.layout.popover/popover
+          :p/description-list pinkgorilla.layout.description-list/description-list
+          :p/panel pinkgorilla.layout.panel/panel}
+
+ ; modules not yet via loader
  :modules {}
 
  :snippets [;control
@@ -47,11 +88,11 @@
              :id :progress
              :filename "snippets/input/progress.edn"}
             ;; layout
-            {:type :pinkie
+            #_{:type :pinkie
              :category :layout
              :id :tab1
              :filename "snippets/layout/tab1.edn"}
-            #_{:type :pinkie
+            {:type :pinkie
                :category :layout
                :id :tab2
                :filename "snippets/layout/tab2.edn"}

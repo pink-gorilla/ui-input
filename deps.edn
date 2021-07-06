@@ -2,7 +2,9 @@
          "resources" ; snippets
          ]
  :deps
- {org.clojure/clojure    {:mvn/version "1.10.3"}}
+ {org.clojure/clojure    {:mvn/version "1.10.3"}
+   org.pinkgorilla/pinkie {:mvn/version "0.3.5"} ; box
+  }
  :aliases
  {;https://github.com/applied-science/deps-library
   :release
@@ -38,7 +40,9 @@
   ; demo ui
 
   :goldly
-  {:extra-deps {org.pinkgorilla/goldly {:mvn/version "RELEASE"}}
+  {:extra-deps {org.pinkgorilla/goldly {:mvn/version "RELEASE"
+                                        :exclusions [org.pinkgorilla/ui-input]
+                                        }}
    :exec-fn goldly-server.app/goldly-server-run!
    :exec-args {:profile "watch"
                :config {:goldly {}}}}

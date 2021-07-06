@@ -9,7 +9,7 @@
   "@popperjs/core" "^2.4.0"
 
   ; layout
-  "tails-ui" "^0.5.5"
+  ;"tails-ui" "^0.5.5"
   "react-grid-layout" "^1.2.4" ; "^0.18.3"
 
  ;

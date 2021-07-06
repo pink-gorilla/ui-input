@@ -3,6 +3,9 @@
    [reagent.core :as r]
    ["tails-ui" :refer [Button Tab Tabs]]))
 
+; https://github.com/knipferrc/tails-ui
+; clean ui based on tailwind css
+
 #_(defn ^{:category :control} button1 []
     [:<>
      [:link {:rel "stylesheet" :href css}]
@@ -37,6 +40,5 @@
    (into [:> Tabs]
          (map (fn [child]
                 (into [:> Tab] (rest child))) children))])
-
 
 

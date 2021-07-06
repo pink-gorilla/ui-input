@@ -1,0 +1,23 @@
+[:div
+ [:h2 "Tabs"]
+
+ [:p/tab
+   "a"
+   [:h4 "We love the A-team !"]
+   "b"
+   [:h4 "Bananas are a great potassium source!"]]
+ 
+ [:p/tab {:box :md :class "bg-green-300"}
+  "a"
+  [:h4 "We love the A-team !"]
+  "b"
+  [:h4 "Bananas are a great potassium source!"]
+  "c"
+  [:h4 "Christmas or santa claus?"]
+  "d"
+  [:h4 "do it. just  do it"]
+
+   ]
+
+ 
+ ]
