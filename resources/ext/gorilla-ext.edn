@@ -7,9 +7,8 @@
          :current {:ionslider true
                    :tailsui false
                    :gridlayout true}}
- :cljs-namespace [pinkie.default-setup
+ :cljs-namespace [;pinkie.default-setup
                   ; inut
-
                   pinkgorilla.input.button
                   pinkgorilla.input.progressbar
                   pinkgorilla.input.bound
@@ -58,10 +57,7 @@
           :p/popover pinkgorilla.layout.popover/popover
           :p/description-list pinkgorilla.layout.description-list/description-list
           :p/panel pinkgorilla.layout.panel/panel}
-
- ; modules not yet via loader
- :modules {}
-
+ :lazy true
  :snippets [;control
             {:type :goldly
              :category :input
