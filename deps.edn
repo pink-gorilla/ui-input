@@ -1,5 +1,6 @@
 {:paths ["src"
          "resources" ; snippets
+         "target/node_modules"
          ]
  :deps
  {org.clojure/clojure    {:mvn/version "1.10.3"}
@@ -40,16 +41,13 @@
   ; demo ui
 
   :goldly
-  {:extra-deps {org.pinkgorilla/goldly {:mvn/version "0.3.11"
-                                        :exclusions [org.pinkgorilla/ui-input]
-                                        }}
+  {:extra-deps {org.pinkgorilla/goldly {:mvn/version "0.3.26"
+                                        :exclusions [org.pinkgorilla/ui-input]}}
    :exec-fn goldly-server.app/goldly-server-run!
    :exec-args {:profile "watch"
                :config {:goldly {:lazy true}}}}
 
  
-
-
 
 ;
   }}
