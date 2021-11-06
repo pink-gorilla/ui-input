@@ -1,10 +1,9 @@
 {:paths ["src"
          "resources" ; snippets
-         "target/node_modules"
-         ]
+         "target/node_modules"]
  :deps
  {org.clojure/clojure    {:mvn/version "1.10.3"}
-   org.pinkgorilla/pinkie {:mvn/version "0.3.11"} ; box
+  org.pinkgorilla/pinkie {:mvn/version "0.3.11"} ; box
   }
  :aliases
  {;https://github.com/applied-science/deps-library
@@ -41,13 +40,25 @@
   ; demo ui
 
   :goldly
-  {:extra-deps {org.pinkgorilla/goldly {:mvn/version "0.3.26"
-                                        :exclusions [org.pinkgorilla/ui-input]}}
-   :exec-fn goldly-server.app/goldly-server-run!
-   :exec-args {:profile "watch"
-               :config {:goldly {:lazy true}}}}
+  {:extra-deps {org.pinkgorilla/goldly {:mvn/version "0.3.70"
+                                        :exclusions [org.pinkgorilla/ui-input
+                                                     org.pinkgorilla/ui-highlightjs
+                                                     ]}}
+   :exec-fn goldly.app/goldly-server-run!
+   :exec-args {:profile "watch2" ; watch2 - no devtools
+               :config {:goldly {:lazy true
+                                 :autoload-cljs-dir [;"src/goldly/lib"
+                                                     ;"src/goldly/devtools"
+                                                     "src/demo/page"]
+                                 :routes {:app {"" :devtools
+                                                ; devtools
+                                                "devtools/pages" :pages
+                                                "devtools/help" :devtools
+                                                "devtools/scratchpad" :scratchpad
+                                                "devtools/viewer" :viewer
+                                                "devtools/environment" :environment}}}}}}
 
- 
+
 
 ;
   }}
