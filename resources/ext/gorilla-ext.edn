@@ -8,7 +8,8 @@
                    :tailsui false
                    :gridlayout true}}
  :cljs-namespace [;pinkie.default-setup
-                  ; inut
+                  pinkgorilla.debounce
+                  ; input
                   pinkgorilla.input.button
                   pinkgorilla.input.progressbar
                   pinkgorilla.input.bound
@@ -21,11 +22,11 @@
                   pinkgorilla.layout.popover
                   pinkgorilla.layout.description-list
                   pinkgorilla.layout.panel]
- :cljs-bindings {}
+ :cljs-bindings {'debounce pinkgorilla.debounce/debounce}
  :cljs-ns-bindings {'input {'button pinkgorilla.input.button/button
                             'progressbar pinkgorilla.input.progressbar/progressbar
                             ;input bound
-                            'text pinkgorilla.input.bound/input-a
+                            'textbox pinkgorilla.input.bound/text-a
                             'select pinkgorilla.input.bound/select-a
                             'checkbox pinkgorilla.input.bound/checkbox-a
                             'slider  pinkgorilla.input.bound/slider-ion-a}
@@ -43,7 +44,7 @@
           :p/button pinkgorilla.input.button/button
           :p/progressbar pinkgorilla.input.progressbar/progressbar
           ;input bound
-          :p/input-a pinkgorilla.input.bound/input-a
+          :p/textbox pinkgorilla.input.bound/text-a ; text is defined in pinkie.
           :p/checkbox pinkgorilla.input.bound/checkbox-a
           :p/select pinkgorilla.input.bound/select-a
           :p/slider pinkgorilla.input.bound/slider-ion-a

@@ -1,7 +1,5 @@
 
-
-
-(defn gridlayout-page [{:keys [route-params query-params handler] :as route}]
+(defn grid-layout-page [{:keys [route-params query-params handler] :as route}]
   [:div.bg-green-300 {:style {:width 1000
                               :height 600}}
    [layout/gridlayout {:className "layout"
@@ -15,8 +13,5 @@
     [:div.bg-yellow-300 {:key "b"} "b"]
     [:div.bg-green-600 {:key "c"} "c"]]])
 
-(add-page gridlayout-page :gridlayout)
-
-
-
+(add-page grid-layout-page :grid-layout)
 

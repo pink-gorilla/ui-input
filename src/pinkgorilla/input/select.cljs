@@ -81,12 +81,12 @@
        ;[:div {:class "flex-auto flex flex-col items-center"} ; h-64
        [:div {:class "flex flex-col items-center relative"}
 
-        [:div {:class "w-full svelte-1l8159u"}
-         [:div {:class "my-2 bg-white p-1 flex border border-gray-200 rounded svelte-1l8159u"}
+        [:div {:class "w-full"}
+         [:div {:class "my-2 bg-white p-1 flex border border-gray-200 rounded"}
           [:div {:class "flex flex-auto flex-wrap"}]
           [:input {:value (if display (display value) value)
                    :on-change no-op
-                   :class "p-1 px-2 appearance-none outline-none w-full text-gray-800 svelte-1l8159u"}]
+                   :class "p-1 px-2 appearance-none outline-none w-full text-gray-800"}]
           [button-remove-selection unselect]
           [button-dropdown @dropdown? toggle-dropdown]]]
 
