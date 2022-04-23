@@ -1,6 +1,6 @@
 
 (defn save-input! [input & args]
-  (js/console.log "Saving input: " input))
+  (js/console.log "debounce test: Saving input: " input))
 
 ;; note how we use def instead of defn
 (def save-input-debounced!

@@ -16,6 +16,6 @@
       :value (if (nil? value) "" value)
       :on-change (fn [e]
                    (let [v (-> e .-target .-value)]
-                     (info "textbox value: " v)
+                     ;(info "textbox value: " v)
                      (on-change v)))})]])
 

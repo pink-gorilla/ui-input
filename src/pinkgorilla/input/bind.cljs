@@ -11,7 +11,7 @@
                           (if path
                             (swap! a assoc-in path v)
                             (reset! a v))
-                          (info "control changed to: " v)
+                          ;(info "control changed to: " v)
                           (when on-change
                             (on-change v)))]
       [control (merge options

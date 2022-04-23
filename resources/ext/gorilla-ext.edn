@@ -20,6 +20,7 @@
                   pinkgorilla.layout.sidebar
                   ;pinkgorilla.layout.tailsui
                   pinkgorilla.layout.popover
+                  pinkgorilla.layout.rnd
                   pinkgorilla.layout.description-list
                   pinkgorilla.layout.panel]
  :cljs-bindings {'debounce pinkgorilla.debounce/debounce}
@@ -37,6 +38,7 @@
                              ;'tabs pinkgorilla.layout.tailsui/tabs
                              'tooltip pinkgorilla.layout.popover/tooltip
                              'popover pinkgorilla.layout.popover/popover
+                             'rnd pinkgorilla.layout.rnd/rnd
                              'description-list pinkgorilla.layout.description-list/description-list
                              'panel pinkgorilla.layout.panel/panel}}
 

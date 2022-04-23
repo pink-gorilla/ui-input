@@ -12,5 +12,7 @@
   ;"tails-ui" "^0.5.5"
   "react-grid-layout" "^1.2.4" ; "^0.18.3"
 
+  "react-rnd" "^10.3.7"; A resizable and draggable component for React.
+
  ;
   }}

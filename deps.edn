@@ -2,7 +2,7 @@
          "resources" ; snippets
          "target/node_modules"]
  :deps
- {org.clojure/clojure    {:mvn/version "1.10.3"}
+ {org.clojure/clojure    {:mvn/version "1.11.1"}
   org.pinkgorilla/pinkie {:mvn/version "0.3.11"} ; box
   }
  :aliases
@@ -40,9 +40,9 @@
   ; demo ui
 
   :goldly
-  {:extra-deps {org.pinkgorilla/goldly {:mvn/version "0.4.486"
+  {:extra-deps {org.pinkgorilla/goldly {:mvn/version "0.4.500"
                                         :exclusions [org.pinkgorilla/ui-input]} ; this project
-                org.pinkgorilla/ui-repl {:mvn/version "0.0.36"}  ; reagent atoms in cljs
+                org.pinkgorilla/ui-repl {:mvn/version "0.0.43"}  ; reagent atoms in cljs
                                         }
    :exec-fn goldly.app/goldly-server-run!
    :exec-args {:profile "watch2" ; watch2 - no devtools

@@ -1,22 +1,25 @@
 # ui-input [![GitHub Actions status |pink-gorilla/ui-binary-clock](https://github.com/pink-gorilla/ui-input/workflows/CI/badge.svg)](https://github.com/pink-gorilla/ui-input/actions?workflow=CI)[![Clojars Project](https://img.shields.io/clojars/v/org.pinkgorilla/ui-input.svg)](https://clojars.org/org.pinkgorilla/ui-input)
 
-Input controls:
+## Input controls
 - text
 - checkbox
 - button
 - slider
 - select
 
-## Demo
+## Layout controls
+- react rnd (resize and dragable)
+
+# Demo
 
 ```
 clojure -X:goldly
 ```
 
-Navigate your webbrowser to port 8000. 
-Snippets are in `running systems` / `snippet-registry`
+Navigate your webbrowser to port 8080. 
 
-## In Goldly as a ui extension
+
+# In Goldly as a ui extension
 
 In deps.edn add quil as dependency and add goldly alias
 
