@@ -31,7 +31,7 @@
                             'select pinkgorilla.input.bound/select-a
                             'checkbox pinkgorilla.input.bound/checkbox-a
                             'slider  pinkgorilla.input.bound/slider-ion-a}
-                    'layout {'gridlayout pinkgorilla.layout.gridlayout/gridlayout
+                    'container {'gridlayout pinkgorilla.layout.gridlayout/gridlayout
                              'sidebar  pinkgorilla.layout.sidebar/sidebar
                              'tab pinkgorilla.layout.tab/tab
                              ;'tab pinkgorilla.layout.tailsui/tab

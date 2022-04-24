@@ -11,7 +11,7 @@
       [:div
        [link-href "/" "main"]
        [:div.text-green-500.mt-5.text-xl.mb-5 "input demo"]
-       [layout/panel {:title "panel with controls"}
+       [container/panel {:title "panel with controls"}
         [:div.grid ; .grid-cols-2 
          {:style {:grid-template-columns "140px 1fr"}}
          ;{:class "flex items-center justify-between"}

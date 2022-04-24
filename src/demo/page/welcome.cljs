@@ -15,17 +15,17 @@
        [input/button {:on-click #(alert (str (:name @*state) " is traveling to Hawai!"))} "Travel!"]])))
 
 (defn info-box []
-  [layout/rnd {:bounds "window"
-               :scale 0.7
-               :default {:width 200
-                         :height 200
-                         :x 200
-                         :y 100}
-               :style {:display "flex"
+  [container/rnd {:bounds "window"
+                  :scale 0.7
+                  :default {:width 200
+                            :height 200
+                            :x 200
+                            :y 100}
+                  :style {:display "flex"
                        ;:alignItems "center"
-                       :justifyContent "center"
-                       :border "solid 1px #ddd"
-                       :background "#f0f0f0"}}
+                          :justifyContent "center"
+                          :border "solid 1px #ddd"
+                          :background "#f0f0f0"}}
     ;[:h1 "asdf"]
    [info-content]])
 

@@ -22,20 +22,20 @@
      [:tooltip {:color "red"
                 :title  "oranges"
                 :content "Lets make orange juice"}]]
-    [layout/popover {:color "green"
-                     :placement "right"
-                     :button-text "trees-r"}
-     [layout/tooltip {:color "green"
-                      :title  "tree"
-                      :content "How many trees are in a forest?"}]]]
+    [container/popover {:color "green"
+                        :placement "right"
+                        :button-text "trees-r"}
+     [container/tooltip {:color "green"
+                         :title  "tree"
+                         :content "How many trees are in a forest?"}]]]
 
       ;[:h2.mt-5 "Tabs"]
    #_[:div
-      (layout/tab
+      (container/tab
        "a" [:h4 "We love the A-team !"]
        "b" [:h4 "Bananas are a great potassium source!"])
 
-      [layout/tab {:box :md :class "bg-green-300"}
+      [container/tab {:box :md :class "bg-green-300"}
        "a"
        [:h4 "We love the A-team !"]
        "b"

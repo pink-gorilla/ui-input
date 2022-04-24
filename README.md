@@ -7,7 +7,7 @@
 - slider
 - select
 
-## Layout controls
+## Container controls
 - react rnd (resize and dragable)
 
 # Demo

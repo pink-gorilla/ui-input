@@ -3,7 +3,7 @@
 (defn desclist-page [{:keys [route-params query-params handler] :as route}]
   [:div
    [:h2 "description list"]
-   [layout/description-list
+   [container/description-list
     "Applicant Information"
     "Personal details and application."
 
