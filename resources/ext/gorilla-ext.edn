@@ -3,10 +3,16 @@
  :theme {:available  {:ionslider {true ["ion-rangeslider/css/ion.rangeSlider.min.css"]}
                       :tailsui {true ["tails-ui/dist/index.css"]}
                       :gridlayout {true ["react-grid-layout/css/styles.css"
-                                         "react-resizable/css/styles.css"]}}
+                                         "react-resizable/css/styles.css"]}
+                      :spaces {true ["react-spaces/dist/server.css"
+                                     "spaces/gorilla.css"
+                                     ]}
+                      }
          :current {:ionslider true
                    :tailsui false
-                   :gridlayout true}}
+                   :gridlayout true
+                   :spaces true
+                   }}
  :cljs-namespace [;pinkie.default-setup
                   pinkgorilla.debounce
                   ; input
@@ -22,7 +28,10 @@
                   pinkgorilla.layout.popover
                   pinkgorilla.layout.rnd
                   pinkgorilla.layout.description-list
-                  pinkgorilla.layout.panel]
+                  pinkgorilla.layout.panel
+                  
+                  pinkgorilla.layout.spaces
+                  ]
  :cljs-bindings {'debounce pinkgorilla.debounce/debounce}
  :cljs-ns-bindings {'input {'button pinkgorilla.input.button/button
                             'progressbar pinkgorilla.input.progressbar/progressbar
@@ -40,7 +49,27 @@
                              'popover pinkgorilla.layout.popover/popover
                              'rnd pinkgorilla.layout.rnd/rnd
                              'description-list pinkgorilla.layout.description-list/description-list
-                             'panel pinkgorilla.layout.panel/panel}}
+                             'panel pinkgorilla.layout.panel/panel}
+                    'spaces {'viewport pinkgorilla.layout.spaces/viewport
+                             
+                             'fill pinkgorilla.layout.spaces/fill
+
+                             'left pinkgorilla.layout.spaces/left
+                             'right pinkgorilla.layout.spaces/right
+                             'top pinkgorilla.layout.spaces/top
+                             'bottom pinkgorilla.layout.spaces/bottom
+
+                             'left-resizeable pinkgorilla.layout.spaces/left-resizeable
+                             'right-resizeable pinkgorilla.layout.spaces/right-resizeable
+                             'top-resizeable pinkgorilla.layout.spaces/top-resizeable
+                             'bottom-resizeable pinkgorilla.layout.spaces/bottom-resizeable
+                              
+                             'centered-vertically pinkgorilla.layout.spaces/centered-vertically
+
+                             'description pinkgorilla.layout.spaces/description
+                             }
+                    
+                    }
 
  :pinkie {;input
           :p/button pinkgorilla.input.button/button

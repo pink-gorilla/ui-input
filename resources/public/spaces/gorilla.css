@@ -1,0 +1,12 @@
+
+
+
+.spaces-resize-handle {
+    background-color: red !important;
+    opacity: 0.5;
+}
+
+.spaces-fullpage-layout {
+    position: absolute !important;
+}
+

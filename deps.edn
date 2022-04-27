@@ -40,7 +40,7 @@
   ; demo ui
 
   :goldly
-  {:extra-deps {org.pinkgorilla/goldly {:mvn/version "0.4.500"
+  {:extra-deps {org.pinkgorilla/goldly {:mvn/version "0.4.502"
                                         :exclusions [org.pinkgorilla/ui-input]} ; this project
                 org.pinkgorilla/ui-repl {:mvn/version "0.0.43"}  ; reagent atoms in cljs
                                         }
@@ -59,13 +59,14 @@
                                                 "description-list" :description-list
                                                 "layout" :layout
                                                 "grid-layout" :grid-layout
-                                                ;"devtools" :devtools
-                                                ;"devtools/viewer" :viewer
-                                                ;"devtools/scratchpad" :scratchpad
-                                                ;"devtools/theme" :theme
-                                                ;"devtools/environment" :environment
-                                                ;"devtools/pages" :pages
-                                                ;"devtools/help" :devtools
+                                                "spaces" :spaces
+                                                "devtools" :devtools
+                                                "devtools/viewer" :viewer
+                                                "devtools/scratchpad" :scratchpad
+                                                "devtools/theme" :theme
+                                                "devtools/environment" :environment
+                                                "devtools/pages" :pages
+                                                "devtools/help" :devtools
                                                 "goldly/reload" :goldly/reload-cljs}
                                                 
                                                 }}}}}

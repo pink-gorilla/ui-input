@@ -37,6 +37,7 @@
    [:a {:href "input"} [:p "input"]]
    [:a {:href "layout"} [:p "layout"]]
    [:a {:href "description-list"} [:p "Description List"]]
-   [:a {:href "grid-layout"} [:p "Grid Layout"]]])
+   [:a {:href "grid-layout"} [:p "Grid Layout"]]
+   [:a {:href "spaces"} [:p "Spaces Layout"]]])
 
 (add-page welcome-page :welcome)

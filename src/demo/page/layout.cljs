@@ -29,7 +29,7 @@
                          :title  "tree"
                          :content "How many trees are in a forest?"}]]]
 
-      ;[:h2.mt-5 "Tabs"]
+;[:h2.mt-5 "Tabs"]
    #_[:div
       (container/tab
        "a" [:h4 "We love the A-team !"]
