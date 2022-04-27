@@ -9,7 +9,7 @@
 (defn ^{:category :control}
   checkbox [{:keys [value on-change]}]
   [:input {:type "checkbox"
-           :class "pt-0 px-2 py-1 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-sm border border-gray-400 outline-none focus:outline-none focus:shadow-outline w-full"
+           :class "pt-0 px-2 py-1 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-sm border border-gray-400 outline-none focus:outline-none focus:shadow-outline"
            :checked (if (nil? value)
                       false
                       value)

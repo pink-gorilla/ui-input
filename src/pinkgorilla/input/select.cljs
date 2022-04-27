@@ -45,7 +45,7 @@
   (let [points (if dropdown?
                  "18 15 12 9 6 15"
                  "18 9  12 15 6 9")]
-    [:div {:class "text-gray-300 w-8 py-1 pl-2 pr-1 border-l flex items-center border-gray-200 svelte-1l8159u"}
+    [:div {:class "text-gray-300 w-8 py-1 pl-2 pr-1 border-l flex items-center border-gray-200"}
      [:button {:class "cursor-pointer w-6 h-6 text-gray-600 outline-none focus:outline-none"
                :on-click h}
       [:svg {:stroke "currentColor"
@@ -75,36 +75,34 @@
                     (when on-change (on-change %)))
         unselect #(when on-change (on-change nil))
         no-op #()]
-    (fn [{:keys [items value display on-change]}]
-      [:<>
+    (fn [{:keys [items value display class on-change]}]
+      [:div {:class (str "flex flex-col items-center relative " (or class ""))}
        [css]
        ;[:div {:class "flex-auto flex flex-col items-center"} ; h-64
-       [:div {:class "flex flex-col items-center relative"}
+       [:div {:class "w-full"}
+        [:div {:class "bg-white flex border border-gray-200 rounded"} ; p-1 my-2
+         [:div {:class "flex flex-auto flex-wrap"}]
+         [:input {:value (if display (display value) value)
+                  :on-change no-op
+                  :class "p-1 px-2 appearance-none outline-none w-full text-gray-800"}]
+         [button-remove-selection unselect]
+         [button-dropdown @dropdown? toggle-dropdown]]]
 
-        [:div {:class "w-full"}
-         [:div {:class "my-2 bg-white p-1 flex border border-gray-200 rounded"}
-          [:div {:class "flex flex-auto flex-wrap"}]
-          [:input {:value (if display (display value) value)
-                   :on-change no-op
-                   :class "p-1 px-2 appearance-none outline-none w-full text-gray-800"}]
-          [button-remove-selection unselect]
-          [button-dropdown @dropdown? toggle-dropdown]]]
-
-        (when @dropdown?
-          [:div {:class (str "absolute bg-blue-200 shadow z-50 w-full lef-0 rounded max-h-select top-100 " ; top-100
-                             "overflow-y-auto")}
-           [:div {:class "flex flex-col w-full"}
-            (doall (map-indexed (fn [i v]
-                                  ^{:key i}
-                                  [select-item
-                                   {:value v
-                                    :display display
-                                    :selected? (= value v)
-                                    :position (pos-key i)
-                                    :select select}])
-                                items))]])]
+       (when @dropdown?
+         [:div {:class (str "absolute bg-blue-200 shadow z-50 w-full lef-0 rounded max-h-select top-100 " ; top-100
+                            "overflow-y-auto")}
+          [:div {:class "flex flex-col w-full"}
+           (doall (map-indexed (fn [i v]
+                                 ^{:key i}
+                                 [select-item
+                                  {:value v
+                                   :display display
+                                   :selected? (= value v)
+                                   :position (pos-key i)
+                                   :select select}])
+                               items))]])]
 ;        ]
-       ])))
+      )))
 
 (defn go-next [v list action]
   (let [new-index (inc (.indexOf list v))
@@ -121,10 +119,12 @@
 (defn ^{:category :control}
   select-nav [{:keys [items value on-change nav?] :as opts}]
   (if nav?
-    [:<>
-     [select opts]
-     [button {:on-click #(go-prior value items on-change)} "<"]
-     [button {:on-click #(go-next value items on-change)} ">"]]
+    [:div.flex.flex-row
+     [select (merge opts {:class "flex-grow"})]
+     [button {:on-click #(go-prior value items on-change)
+              :class "hover:bg-blue-700 text-gray-600  font-bold rounded border border-gray-200 w-6"} "<"]
+     [button {:on-click #(go-next value items on-change)
+              :class "hover:bg-blue-700 text-gray-600  font-bold rounded border border-gray-200 w-6"} ">"]]
     [select opts]))
 
 ; https://www.creative-tim.com/learning-lab/tailwind-starter-kit/documentation/react/dropdown
