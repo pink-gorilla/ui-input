@@ -22,10 +22,10 @@
      [:tooltip {:color "red"
                 :title  "oranges"
                 :content "Lets make orange juice"}]]
-    [container/popover {:color "green"
+    [user/popover {:color "green"
                         :placement "right"
                         :button-text "trees-r"}
-     [container/tooltip {:color "green"
+     [user/tooltip {:color "green"
                          :title  "tree"
                          :content "How many trees are in a forest?"}]]]
 

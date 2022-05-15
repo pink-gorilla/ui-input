@@ -1,0 +1,9 @@
+{:name "ui-gridlayout"
+ ; build
+ :lazy true
+ :cljs-namespace [pinkgorilla.layout.gridlayout]
+ :cljs-bindings {'gridlayout pinkgorilla.layout.gridlayout/gridlayout}
+ ; theme
+ :theme {:available  {:gridlayout {true ["react-grid-layout/css/styles.css"
+                                         "react-resizable/css/styles.css"]}}
+         :current {:gridlayout true}}}

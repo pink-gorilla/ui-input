@@ -1,8 +1,15 @@
 
 
-
+/* 
 .spaces-resize-handle {
     background-color: red !important;
+    opacity: 0.5;
+}
+
+*/
+
+.spaces-resize-handle:hover {
+    background-color: blue !important;
     opacity: 0.5;
 }
 

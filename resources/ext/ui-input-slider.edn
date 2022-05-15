@@ -1,6 +1,0 @@
-{:name "ui-input-slider"
- ; build-time
- :lazy true
- :cljs-ns-bindings {'input2 {'slider  pinkgorilla.input.bound/slider-ion-a}}
- :theme {:available  {:ionslider {true ["ion-rangeslider/css/ion.rangeSlider.min.css"]}}
-         :current {:ionslider true}}}

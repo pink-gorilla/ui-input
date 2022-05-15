@@ -15,7 +15,7 @@
        [input/button {:on-click #(alert (str (:name @*state) " is traveling to Hawai!"))} "Travel!"]])))
 
 (defn info-box []
-  [container/rnd {:bounds "window"
+  [user/rnd {:bounds "window"
                   :scale 0.7
                   :default {:width 200
                             :height 200

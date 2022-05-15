@@ -1,0 +1,20 @@
+{:name "ui-container"
+ ; build
+ :lazy true
+ :cljs-namespace [pinkgorilla.layout.tab
+                  pinkgorilla.layout.sidebar
+                  ;pinkgorilla.layout.tailsui
+                  pinkgorilla.layout.description-list
+                  pinkgorilla.layout.panel]
+ :cljs-ns-bindings {'container {'sidebar  pinkgorilla.layout.sidebar/sidebar
+                                'tab pinkgorilla.layout.tab/tab
+                             ;'tab pinkgorilla.layout.tailsui/tab
+                             ;'tabs pinkgorilla.layout.tailsui/tabs
+
+                                'description-list pinkgorilla.layout.description-list/description-list
+                                'panel pinkgorilla.layout.panel/panel}}
+ ; theme
+ :theme {:available  {;:tailsui {true ["tails-ui/dist/index.css"]}
+                      }
+         :current {;:tailsui false
+                   }}}

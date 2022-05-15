@@ -1,0 +1,11 @@
+{:name "ui-popover"
+ ; build
+ :lazy true
+ :cljs-namespace [pinkgorilla.layout.popover]
+ :cljs-bindings {'popover pinkgorilla.layout.popover/popover
+                 'tooltip pinkgorilla.layout.popover/tooltip}
+ ; theme
+ :theme {:available  {;:tailsui {true ["tails-ui/dist/index.css"]}
+                      }
+         :current {;:tailsui false
+                   }}}

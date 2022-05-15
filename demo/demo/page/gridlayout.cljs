@@ -2,7 +2,7 @@
 (defn grid-layout-page [{:keys [route-params query-params handler] :as route}]
   [:div.bg-green-300 {:style {:width 1000
                               :height 600}}
-   [container/gridlayout {:className "layout"
+   [user/gridlayout {:className "layout"
                           :layout [{:i "a" :x 0 :y 0 :w 1 :h 2 :static true}
                                    {:i "b" :x 1 :y 0 :w 3 :h 2 :minW 2 :maxW 4}
                                    {:i "c" :x 4 :y 0 :w 1 :h 2}]
