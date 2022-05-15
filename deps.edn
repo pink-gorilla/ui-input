@@ -1,6 +1,7 @@
 {:paths ["src"
-         "resources" ; snippets
-         "target/node_modules"]
+         "resources" ; goldly-ext, css
+         "target/node_modules" ; css from npm modules
+         ]
  :deps
  {org.clojure/clojure    {:mvn/version "1.11.1"}
   org.pinkgorilla/pinkie {:mvn/version "0.3.11"} ; box
@@ -39,37 +40,29 @@
 
   ; demo ui
 
-  :goldly
-  {:extra-deps {org.pinkgorilla/goldly {:mvn/version "0.4.502"
-                                        :exclusions [org.pinkgorilla/ui-input]} ; this project
-                org.pinkgorilla/ui-repl {:mvn/version "0.0.43"}  ; reagent atoms in cljs
-                                        }
-   :exec-fn goldly.app/goldly-server-run!
-   :exec-args {:profile "watch2" ; watch2 - no devtools
-               :config {:goldly {:lazy false ; true
-                                 :autoload-clj-ns [;goldly.devtools
-                                                  ]
-                                 :autoload-cljs-dir [;"goldly/lib"
-                                                     ;"goldly/devtools"
-                                                     "demo/lib"
-                                                     "demo/page"]
-                                 :watch-cljs-dir ["src/demo/page"]
-                                 :routes {:app {"" :welcome
-                                                "input" :input
-                                                "description-list" :description-list
-                                                "layout" :layout
-                                                "grid-layout" :grid-layout
-                                                "spaces" :spaces
-                                                "devtools" :devtools
-                                                "devtools/viewer" :viewer
-                                                "devtools/scratchpad" :scratchpad
-                                                "devtools/theme" :theme
-                                                "devtools/environment" :environment
-                                                "devtools/pages" :pages
-                                                "devtools/help" :devtools
-                                                "goldly/reload" :goldly/reload-cljs}
-                                                
-                                                }}}}}
+  :goldly-build ; goldly compile (show reval in goldly, but with up to date reval!)
+  {:extra-paths ["target/webly" ; to include the sci-bindings info
+                 "demo"]
+   :extra-deps {org.pinkgorilla/goldly {:mvn/version "0.4.517"}
+                org.pinkgorilla/ui-repl {:mvn/version "0.0.43"} ; reagent
+                }
+   :exec-fn goldly.app.build/goldly-build
+   :exec-args {:profile "npm-install"
+               :config  ["webly/config.edn" "goldly/config.edn" "demo/config.edn"]}}
+
+
+  :goldly-run ; goldly compile (show reval in goldly, but with up to date reval!)
+  {:extra-paths ["target/webly" ; to include the sci-bindings info
+                 "node_modules"
+                 "demo"]
+   :extra-deps {org.pinkgorilla/goldly {:mvn/version "0.4.517"}
+                org.pinkgorilla/ui-repl {:mvn/version "0.0.43"} ; reagent atoms in cljs
+                }
+   :exec-fn modular.system/start!
+   :exec-args {:profile "jetty"
+               :services "goldly/services.edn"
+               :config  ["webly/config.edn" "goldly/config.edn" "demo/config.edn"]}}
+
 
 
 

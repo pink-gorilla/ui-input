@@ -1,0 +1,7 @@
+{:name "ui-debounce"
+ ; build-time
+ :lazy false ; debouncer does not support lazy.
+ :cljs-namespace [pinkgorilla.debounce]
+ :cljs-bindings {'debounce pinkgorilla.debounce/debounce}
+}
+                  

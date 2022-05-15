@@ -64,9 +64,9 @@
          ; shiny equivalent:
         ; sliderInput ("n", label = "Number of samples", min = 2, max = 1000, value = 100)
          [:div
-          [input/slider {:min 1 :max 10} *state [:a]]
-          [input/slider {:min 1 :max 10} *state [:b]]
-          [input/slider {:min 1000 :max 100000 :step 500} *state [:c]]]
+          [input2/slider {:min 1 :max 10} *state [:a]]
+          [input2/slider {:min 1 :max 10} *state [:b]]
+          [input2/slider {:min 1000 :max 100000 :step 500} *state [:c]]]
 
          [:p "flexbox test"]
          [:div.flex.flex-row.w-full

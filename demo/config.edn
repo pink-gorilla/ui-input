@@ -1,0 +1,18 @@
+{:goldly {:lazy true 
+          :autoload-cljs-dir ["demo/lib"
+                              "demo/page"]
+          :watch-cljs-dir ["src/demo/page"]
+          :routes {:app {"" :welcome
+                         "input" :input
+                         "description-list" :description-list
+                         "layout" :layout
+                         "grid-layout" :grid-layout
+                         "spaces" :spaces
+                         "devtools" :devtools
+                         "devtools/viewer" :viewer
+                         "devtools/scratchpad" :scratchpad
+                         "devtools/theme" :theme
+                         "devtools/environment" :environment
+                         "devtools/pages" :pages
+                         "devtools/help" :devtools
+                         "goldly/reload" :goldly/reload-cljs}}}}

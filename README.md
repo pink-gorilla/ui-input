@@ -13,24 +13,13 @@
 # Demo
 
 ```
-clojure -X:goldly
+clojure -X:goldly-build :profile "npm-install"
+clojure -X:goldly-build :profile "compile"
+clojure -X:goldly-run
+
 ```
 
 Navigate your webbrowser to port 8080. 
-
-
-# In Goldly as a ui extension
-
-In deps.edn add quil as dependency and add goldly alias
-
-```
-:goldly
-  {:extra-deps {org.pinkgorilla/goldly {:mvn/version "RELEASE"}
-               {org.pinkgorilla/ui-input {:mvn/version "0.0.2"}}
-   :exec-fn goldly-server.app/goldly-server-run!
-   :exec-args {:profile "watch"
-               :config {:goldly {}}}}
-```
 
 
 
