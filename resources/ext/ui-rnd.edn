@@ -2,4 +2,5 @@
  ; build
  :lazy true
  :cljs-namespace [pinkgorilla.layout.rnd]
- :cljs-bindings {'rnd pinkgorilla.layout.rnd/rnd}}
+ :cljs-bindings {'rnd pinkgorilla.layout.rnd/rnd} ; depreciated
+ :cljs-ns-bindings {'ui.rnd {'rnd pinkgorilla.layout.rnd/rnd}}}

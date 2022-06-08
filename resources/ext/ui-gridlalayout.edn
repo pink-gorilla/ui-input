@@ -3,6 +3,7 @@
  :lazy true
  :cljs-namespace [pinkgorilla.layout.gridlayout]
  :cljs-bindings {'gridlayout pinkgorilla.layout.gridlayout/gridlayout}
+ :cljs-ns-bindings {'ui.gridlayout {'gridlayout pinkgorilla.layout.gridlayout/gridlayout}}
  ; theme
  :theme {:available  {:gridlayout {true ["react-grid-layout/css/styles.css"
                                          "react-resizable/css/styles.css"]}}

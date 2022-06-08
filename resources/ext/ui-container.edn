@@ -8,9 +8,8 @@
                   pinkgorilla.layout.panel]
  :cljs-ns-bindings {'container {'sidebar  pinkgorilla.layout.sidebar/sidebar
                                 'tab pinkgorilla.layout.tab/tab
-                             ;'tab pinkgorilla.layout.tailsui/tab
-                             ;'tabs pinkgorilla.layout.tailsui/tabs
-
+                                ;'tab pinkgorilla.layout.tailsui/tab
+                                ;'tabs pinkgorilla.layout.tailsui/tabs
                                 'description-list pinkgorilla.layout.description-list/description-list
                                 'panel pinkgorilla.layout.panel/panel}}
  ; theme
