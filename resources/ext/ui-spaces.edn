@@ -1,6 +1,6 @@
 {:name "ui-spaces"
  ; build
- :lazy true
+ :lazy-sci true
  :cljs-namespace [pinkgorilla.layout.spaces]
  :cljs-ns-bindings {'spaces {'viewport pinkgorilla.layout.spaces/viewport
 

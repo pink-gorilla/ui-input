@@ -1,9 +1,7 @@
 {:name "ui-popover"
  ; build
- :lazy true
+ :lazy-sci true
  :cljs-namespace [pinkgorilla.layout.popover]
- :cljs-bindings {'popover pinkgorilla.layout.popover/popover
-                 'tooltip pinkgorilla.layout.popover/tooltip}
  :cljs-ns-bindings {'ui.popover {'popover pinkgorilla.layout.popover/popover
                                  'tooltip pinkgorilla.layout.popover/tooltip}}
  ; theme

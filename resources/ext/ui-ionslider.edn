@@ -1,6 +1,6 @@
 {:name "ui-ionslider"
  ; build
- :lazy true
+ :lazy-sci true
  :cljs-namespace [pinkgorilla.input.ionslider-bound]
  :cljs-ns-bindings {'input2 {'slider pinkgorilla.input.ionslider-bound/slider-ion-a}}
  ; theme
