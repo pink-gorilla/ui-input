@@ -1,3 +1,7 @@
+(ns demo.lib.debounce
+ (:require
+   [ui.debounce :refer [debounce]]))
+
 
 (defn save-input! [input & args]
   (js/console.log "debounce test: Saving input: " input))

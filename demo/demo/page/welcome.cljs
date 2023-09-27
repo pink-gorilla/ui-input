@@ -1,4 +1,10 @@
-
+(ns demo.page.welcome
+  (:require 
+     [reagent.core :as r]
+     [re-frame.core :as rf]
+     [input]
+     [ui.rnd :refer [rnd]]
+     [demo.lib.debounce :refer [save-input-debounced!]]))
 
 (rf/dispatch [:css/set-theme-component :tailwind-full "light"])
 (rf/dispatch [:css/set-theme-component :tailwind-girouette false])
@@ -12,10 +18,10 @@
                           ;:on-change save-input!
                        :on-change save-input-debounced!}
         *state [:name]]
-       [input/button {:on-click #(alert (str (:name @*state) " is traveling to Hawai!"))} "Travel!"]])))
+       [input/button {:on-click #(js/alert (str (:name @*state) " is traveling to Hawai!"))} "Travel!"]])))
 
 (defn info-box []
-  [user/rnd {:bounds "window"
+  [rnd {:bounds "window"
                   :scale 0.7
                   :default {:width 200
                             :height 200
@@ -40,4 +46,4 @@
    [:a {:href "grid-layout"} [:p "Grid Layout"]]
    [:a {:href "spaces"} [:p "Spaces Layout"]]])
 
-(add-page welcome-page :welcome)
+

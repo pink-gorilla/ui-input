@@ -4,7 +4,7 @@
          ]
  :deps
  {org.clojure/clojure    {:mvn/version "1.11.1"}
-  org.pinkgorilla/pinkie {:mvn/version "0.3.11"} ; box
+  org.pinkgorilla/pinkie {:mvn/version "0.3.17"} ; box
   }
  :aliases
  {;https://github.com/applied-science/deps-library
@@ -43,8 +43,8 @@
   :goldly-build ; goldly compile (show reval in goldly, but with up to date reval!)
   {:extra-paths ["target/webly" ; to include the sci-bindings info
                  "demo"]
-   :extra-deps {org.pinkgorilla/goldly {:mvn/version "0.4.520"}
-                org.pinkgorilla/ui-repl {:mvn/version "0.0.43"} ; reagent
+   :extra-deps {org.pinkgorilla/goldly {:mvn/version "0.4.619"}
+                org.pinkgorilla/ui-repl {:mvn/version "0.0.72"} ; reagent
                 }
    :exec-fn goldly.app.build/goldly-build
    :exec-args {:profile "npm-install"
@@ -55,8 +55,8 @@
   {:extra-paths ["target/webly" ; to include the sci-bindings info
                  "node_modules"
                  "demo"]
-   :extra-deps {org.pinkgorilla/goldly {:mvn/version "0.4.520"}
-                org.pinkgorilla/ui-repl {:mvn/version "0.0.43"} ; reagent atoms in cljs
+   :extra-deps {org.pinkgorilla/goldly {:mvn/version "0.4.619"}
+                org.pinkgorilla/ui-repl {:mvn/version "0.0.72"} ; reagent atoms in cljs
                 }
    :exec-fn modular.system/start!
    :exec-args {:profile "jetty"

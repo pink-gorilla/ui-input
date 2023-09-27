@@ -1,4 +1,6 @@
-
+(ns demo.lib.link
+  (:require
+    [re-frame.core :as rf]))
 
 (rf/dispatch [:css/set-theme-component :tailwind-full "light"])
 

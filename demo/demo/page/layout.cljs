@@ -1,3 +1,8 @@
+(ns demo.page.layout
+  (:require
+   [ui.webly :refer [dialog notify]]
+   [ui.popover :refer [popover tooltip]]))
+
 
 (defn my-dialog []
   [:div
@@ -22,10 +27,10 @@
      [:tooltip {:color "red"
                 :title  "oranges"
                 :content "Lets make orange juice"}]]
-    [user/popover {:color "green"
+    [popover {:color "green"
                         :placement "right"
                         :button-text "trees-r"}
-     [user/tooltip {:color "green"
+     [tooltip {:color "green"
                          :title  "tree"
                          :content "How many trees are in a forest?"}]]]
 
@@ -45,4 +50,3 @@
        "d"
        [:h4 "do it. just  do it"]]]])
 
-(add-page layout-page  :layout)

@@ -1,4 +1,13 @@
-
+(ns demo.page.input
+  (:require 
+   [reagent.core :as r]
+   [input]
+   [input2]
+   [container]
+   [demo.lib.link :refer [link-href]]
+   [demo.lib.debounce :refer [save-input-debounced!]]
+   
+   ))
 
 (defn input-page [{:keys [route-params query-params handler] :as route}]
   (let [*state (r/atom {:name "Someone Special"
@@ -29,7 +38,7 @@
           *state [:name]]
 
          [:h2 "button"]
-         [input/button {:on-click #(alert "clicked")} "click me!"]
+         [input/button {:on-click #(js/alert "clicked")} "click me!"]
          [:h2 "checkbox"]
          [input/checkbox {} *state [:super?]]
          [:h2 "progress bar"]
@@ -77,6 +86,5 @@
          [:div.bg-gray-500.mb-12 "state:"]
          [:p (pr-str @*state)]]]])))
 
-(add-page input-page :input)
 
 

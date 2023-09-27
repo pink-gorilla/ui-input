@@ -1,4 +1,6 @@
-
+(ns demo.page.desclist
+  (:require 
+   [container]))
 
 (defn desclist-page [{:keys [route-params query-params handler] :as route}]
   [:div
@@ -18,5 +20,3 @@
      :email "Email address"
      :salary "Salary expectation"
      :memo ""}]])
-
-(add-page desclist-page  :description-list)

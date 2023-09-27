@@ -1,5 +1,6 @@
 (ns demo.page.spaces
-  (:require [user :refer [add-page]]))
+  (:require 
+    [spaces]))
 
 (defn spaces-1 []
   [spaces/viewport
@@ -27,4 +28,4 @@
 (defn spaces-page [{:keys [route-params query-params handler] :as route}]
   [spaces-demo])
 
-(add-page spaces-page :spaces)
+
