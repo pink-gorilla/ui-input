@@ -2,22 +2,25 @@
  ; build
  :lazy-sci true
  :cljs-namespace [pinkgorilla.layout.spaces]
- :cljs-ns-bindings {'spaces {'viewport pinkgorilla.layout.spaces/viewport
-
-                             'fill pinkgorilla.layout.spaces/fill
-
+ :cljs-ns-bindings {'spaces {;; top-level-spaces
+                             'viewport pinkgorilla.layout.spaces/viewport
+                             'fixed pinkgorilla.layout.spaces/fixed
+                             ;; anchored-spaces
                              'left pinkgorilla.layout.spaces/left
                              'right pinkgorilla.layout.spaces/right
                              'top pinkgorilla.layout.spaces/top
                              'bottom pinkgorilla.layout.spaces/bottom
-
                              'left-resizeable pinkgorilla.layout.spaces/left-resizeable
                              'right-resizeable pinkgorilla.layout.spaces/right-resizeable
                              'top-resizeable pinkgorilla.layout.spaces/top-resizeable
                              'bottom-resizeable pinkgorilla.layout.spaces/bottom-resizeable
-
+                             ;; other
+                             'fill pinkgorilla.layout.spaces/fill
+                             'positioned pinkgorilla.layout.spaces/positioned
+                             'layer pinkgorilla.layout.spaces/layer
+                             'centered pinkgorilla.layout.spaces/centered
                              'centered-vertically pinkgorilla.layout.spaces/centered-vertically
-
+                             ;; helper
                              'description pinkgorilla.layout.spaces/description}}
  :theme {:available  {:spaces {true ["react-spaces/dist/server.css"
                                      "spaces/gorilla.css"]}}

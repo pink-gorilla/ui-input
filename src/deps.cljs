@@ -14,7 +14,7 @@
 
   "react-rnd" "^10.3.7"; A resizable and draggable component for React.
 
-  "react-spaces" "^0.3.2" ; layout-system
+  "react-spaces" "^0.4.1" ; layout-system
 
  ;
   }}

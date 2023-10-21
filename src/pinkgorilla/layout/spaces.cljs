@@ -6,10 +6,12 @@
   (fn [opts & [child]]
     [:> c opts child]))
 
-(def viewport (wrap spaces/ViewPort))
+;; top-level-spaces: Used at the top level of all other spaces.
 
-(def fill (wrap spaces/Fill))
-(def description (wrap spaces/Description))
+(def viewport (wrap spaces/ViewPort))
+(def fixed (wrap spaces/Fixed))
+
+;; anchored-spaces:  can be used within the top-level-spaces
 
 (def left (wrap spaces/Left))
 (def right (wrap spaces/Right))
@@ -21,5 +23,19 @@
 (def top-resizeable (wrap spaces/TopResizable))
 (def bottom-resizeable (wrap spaces/BottomResizable))
 
-(def centered-vertically (wrap spaces/CenteredVertically))
+;; other
+
+(def fill (wrap spaces/Fill))
+(def positioned (wrap spaces/Positioned)) ;A space which can be absolutely placed within a parent space either by top, left, width and height or by top, left, right and bottom.
+
+(def layer (wrap spaces/Layer)) ; Layers allow you to create layers within a parent space
+
+(def centered (wrap spaces/Centered)) ; Centres the content of a space horizontally and vertically.
+(def centered-vertically (wrap spaces/CenteredVertically)) ; Centres the content of a space vertically.
+
+;; helper
+
+(def description (wrap spaces/Description))
+
+
 
