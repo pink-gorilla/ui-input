@@ -1,5 +1,5 @@
 (ns demo.page.desclist
-  (:require 
+  (:require
    [container]))
 
 (defn desclist-page [{:keys [route-params query-params handler] :as route}]

@@ -1,9 +1,11 @@
-{:goldly {;:lazy true 
-          :watch-cljs-dir ["src/demo/page"]
-          :routes {:app {"" demo.page.welcome/welcome-page
-                         "input" demo.page.input/input-page
-                         "description-list" demo.page.desclist/desclist-page
-                         "layout" demo.page.layout/layout-page
-                         "grid-layout" demo.page.gridlayout/grid-layout-page
-                         "spaces" demo.page.spaces/spaces-page
-                         }}}}
+{:goldly {:watch-cljs-dir ["src/demo/page"]
+          :routes {:app {} ; demo route are in demo/resources/Ext/app.edn
+                   :api {}}}
+ 
+ 
+  :reval {:collections {:ui-input [:cljs "notebook/"]
+                        ;:demo [:clj "demo/notebook/"]
+                        :demo-cljs [:cljs "demo/notebook/"]
+                       }}
+ 
+ }

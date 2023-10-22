@@ -1,13 +1,11 @@
 (ns demo.page.input
-  (:require 
+  (:require
    [reagent.core :as r]
    [input]
    [input2]
    [container]
    [demo.lib.link :refer [link-href]]
-   [demo.lib.debounce :refer [save-input-debounced!]]
-   
-   ))
+   [demo.lib.debounce :refer [save-input-debounced!]]))
 
 (defn input-page [{:keys [route-params query-params handler] :as route}]
   (let [*state (r/atom {:name "Someone Special"

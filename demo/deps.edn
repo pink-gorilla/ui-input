@@ -1,0 +1,32 @@
+{:paths ["src"
+         "resources" ; goldly-ext, css
+         "target/node_modules" ; css from npm modules
+         ]
+ :deps
+ {org.clojure/clojure    {:mvn/version "1.11.1"}
+  ; goldly
+  org.pinkgorilla/goldly {:mvn/version "0.4.635"}
+  ; goldly extensions
+  org.pinkgorilla/ui-input {:local/root "../" :deps/manifest :deps}
+  org.pinkgorilla/ui-repl {:mvn/version "0.0.73"} ; reagent
+  org.pinkgorilla/devtools {:mvn/version "0.0.18"} ; devtools
+  }
+
+ :aliases
+ {:demo {:exec-fn modular.system/start!
+         :exec-args {:profile "jetty"
+                     :config ["webly/config.edn"
+                              "goldly/config.edn"
+                              "config.edn"]
+                     :services "goldly/services.edn"}}
+
+  :npm-install
+  {:exec-fn goldly.app.build/goldly-build
+   :exec-args {:profile "npm-install"}}
+
+  :compile
+  {:exec-fn goldly.app.build/goldly-build
+   :exec-args {:profile "compile2"}}}}
+
+
+ 

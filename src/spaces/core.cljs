@@ -1,4 +1,4 @@
-(ns pinkgorilla.layout.spaces
+(ns spaces.core
   (:require
    ["react-spaces" :as spaces]))
 
@@ -6,10 +6,15 @@
   (fn [opts & [child]]
     [:> c opts child]))
 
+(defn wrap-many [c]
+  (fn [& args]
+    (into [:> c]
+          args)))
+
 ;; top-level-spaces: Used at the top level of all other spaces.
 
-(def viewport (wrap spaces/ViewPort))
-(def fixed (wrap spaces/Fixed))
+(def viewport (wrap-many spaces/ViewPort))
+(def fixed (wrap-many spaces/Fixed))
 
 ;; anchored-spaces:  can be used within the top-level-spaces
 

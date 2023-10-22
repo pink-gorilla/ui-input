@@ -15,6 +15,6 @@
 
 (defn debounce [f interval]
   (let [d (goog.functions.debounce f interval)]
-    (info "debonced fn with interval: " interval)
+    (info "debounced fn with interval: " interval)
     d))
 

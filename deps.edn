@@ -38,33 +38,19 @@
   {:main-opts ["-m" "garamond.main"]
    :extra-deps {com.workframe/garamond {:mvn/version "0.4.0"}}}
 
-  ; demo ui
+  ; ci
 
-  :goldly-build ; goldly compile (show reval in goldly, but with up to date reval!)
+  :goldly-build ; ci only
   {:extra-paths ["target/webly" ; to include the sci-bindings info
-                 "demo"]
-   :extra-deps {org.pinkgorilla/goldly {:mvn/version "0.4.619"}
-                org.pinkgorilla/ui-repl {:mvn/version "0.0.72"} ; reagent
+                 "demo/src"
+                 "demo/resources"]
+   :extra-deps {org.pinkgorilla/goldly {:mvn/version "0.4.635"}
                 }
    :exec-fn goldly.app.build/goldly-build
    :exec-args {:profile "npm-install"
                :config  ["webly/config.edn" "goldly/config.edn" "demo/config.edn"]}}
 
-
-  :goldly-run ; goldly compile (show reval in goldly, but with up to date reval!)
-  {:extra-paths ["target/webly" ; to include the sci-bindings info
-                 "node_modules"
-                 "demo"]
-   :extra-deps {org.pinkgorilla/goldly {:mvn/version "0.4.619"}
-                org.pinkgorilla/ui-repl {:mvn/version "0.0.72"} ; reagent atoms in cljs
-                }
-   :exec-fn modular.system/start!
-   :exec-args {:profile "jetty"
-               :services "goldly/services.edn"
-               :config  ["webly/config.edn" "goldly/config.edn" "demo/config.edn"]}}
-
-
-
+   ; for demo see README.md or go to "demo" folder and run aliases there.
 
 ;
   }}

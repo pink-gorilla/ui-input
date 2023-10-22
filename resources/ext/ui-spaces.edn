@@ -1,27 +1,56 @@
 {:name "ui-spaces"
  ; build
  :lazy-sci true
- :cljs-namespace [pinkgorilla.layout.spaces]
- :cljs-ns-bindings {'spaces {;; top-level-spaces
-                             'viewport pinkgorilla.layout.spaces/viewport
-                             'fixed pinkgorilla.layout.spaces/fixed
+ :cljs-namespace [spaces.core
+                  spaces.layout.fixed
+                  spaces.layout.screen]
+ :cljs-ns-bindings {'spaces {;; top-level-spaces                             ;; spaces is depreciated. use spaces.core
+                             'viewport spaces.core/viewport
+                             'fixed spaces.core/fixed
+                                                 ;; anchored-spaces
+                             'left spaces.core/left
+                             'right spaces.core/right
+                             'top spaces.core/top
+                             'bottom spaces.core/bottom
+                             'left-resizeable spaces.core/left-resizeable
+                             'right-resizeable spaces.core/right-resizeable
+                             'top-resizeable spaces.core/top-resizeable
+                             'bottom-resizeable spaces.core/bottom-resizeable
+                                                 ;; other
+                             'fill spaces.core/fill
+                             'positioned spaces.core/positioned
+                             'layer spaces.core/layer
+                             'centered spaces.core/centered
+                             'centered-vertically spaces.core/centered-vertically
+                                                 ;; helper
+                             'description spaces.core/description}
+                    'spaces.core {;; top-level-spaces
+                                  'viewport spaces.core/viewport
+                                  'fixed spaces.core/fixed
                              ;; anchored-spaces
-                             'left pinkgorilla.layout.spaces/left
-                             'right pinkgorilla.layout.spaces/right
-                             'top pinkgorilla.layout.spaces/top
-                             'bottom pinkgorilla.layout.spaces/bottom
-                             'left-resizeable pinkgorilla.layout.spaces/left-resizeable
-                             'right-resizeable pinkgorilla.layout.spaces/right-resizeable
-                             'top-resizeable pinkgorilla.layout.spaces/top-resizeable
-                             'bottom-resizeable pinkgorilla.layout.spaces/bottom-resizeable
+                                  'left spaces.core/left
+                                  'right spaces.core/right
+                                  'top spaces.core/top
+                                  'bottom spaces.core/bottom
+                                  'left-resizeable spaces.core/left-resizeable
+                                  'right-resizeable spaces.core/right-resizeable
+                                  'top-resizeable spaces.core/top-resizeable
+                                  'bottom-resizeable spaces.core/bottom-resizeable
                              ;; other
-                             'fill pinkgorilla.layout.spaces/fill
-                             'positioned pinkgorilla.layout.spaces/positioned
-                             'layer pinkgorilla.layout.spaces/layer
-                             'centered pinkgorilla.layout.spaces/centered
-                             'centered-vertically pinkgorilla.layout.spaces/centered-vertically
+                                  'fill spaces.core/fill
+                                  'positioned spaces.core/positioned
+                                  'layer spaces.core/layer
+                                  'centered spaces.core/centered
+                                  'centered-vertically spaces.core/centered-vertically
                              ;; helper
-                             'description pinkgorilla.layout.spaces/description}}
+                                  'description spaces.core/description}
+                    'spaces.layout.screen {'screen-main-top spaces.layout.screen/screen-main-top
+                                           'screen-left-right-top spaces.layout.screen/screen-left-right-top
+                                           'screen-left-right-middle spaces.layout.screen/screen-left-right-middle}
+                    'spaces.layout.fixed {'main-top spaces.layout.fixed/main-top
+                                          'left-right-top spaces.layout.fixed/left-right-top
+                                          'left-right-middle spaces.layout.fixed/left-right-middle}}
+
  :theme {:available  {:spaces {true ["react-spaces/dist/server.css"
                                      "spaces/gorilla.css"]}}
          :current {:spaces true}}}

@@ -1,10 +1,10 @@
 (ns demo.page.welcome
-  (:require 
-     [reagent.core :as r]
-     [re-frame.core :as rf]
-     [input]
-     [ui.rnd :refer [rnd]]
-     [demo.lib.debounce :refer [save-input-debounced!]]))
+  (:require
+   [reagent.core :as r]
+   [re-frame.core :as rf]
+   [input]
+   [ui.rnd :refer [rnd]]
+   [demo.lib.debounce :refer [save-input-debounced!]]))
 
 (rf/dispatch [:css/set-theme-component :tailwind-full "light"])
 (rf/dispatch [:css/set-theme-component :tailwind-girouette false])
@@ -22,16 +22,16 @@
 
 (defn info-box []
   [rnd {:bounds "window"
-                  :scale 0.7
-                  :default {:width 200
-                            :height 200
-                            :x 200
-                            :y 100}
-                  :style {:display "flex"
+        :scale 0.7
+        :default {:width 200
+                  :height 200
+                  :x 200
+                  :y 100}
+        :style {:display "flex"
                        ;:alignItems "center"
-                          :justifyContent "center"
-                          :border "solid 1px #ddd"
-                          :background "#f0f0f0"}}
+                :justifyContent "center"
+                :border "solid 1px #ddd"
+                :background "#f0f0f0"}}
     ;[:h1 "asdf"]
    [info-content]])
 
@@ -41,9 +41,9 @@
    [:h1 "ui-input demos"]
 
    [:a {:href "input"} [:p "input"]]
-   [:a {:href "layout"} [:p "layout"]]
+   [:a {:href "/spaces/main"} [:p "layout"]]
    [:a {:href "description-list"} [:p "Description List"]]
    [:a {:href "grid-layout"} [:p "Grid Layout"]]
-   [:a {:href "spaces"} [:p "Spaces Layout"]]])
+   [:a {:href "spaces/main"} [:p "Spaces Layout"]]])
 
 

@@ -3,7 +3,6 @@
    [ui.webly :refer [dialog notify]]
    [ui.popover :refer [popover tooltip]]))
 
-
 (defn my-dialog []
   [:div
    {:style {:background-color "white"
@@ -28,11 +27,11 @@
                 :title  "oranges"
                 :content "Lets make orange juice"}]]
     [popover {:color "green"
-                        :placement "right"
-                        :button-text "trees-r"}
+              :placement "right"
+              :button-text "trees-r"}
      [tooltip {:color "green"
-                         :title  "tree"
-                         :content "How many trees are in a forest?"}]]]
+               :title  "tree"
+               :content "How many trees are in a forest?"}]]]
 
 ;[:h2.mt-5 "Tabs"]
    #_[:div

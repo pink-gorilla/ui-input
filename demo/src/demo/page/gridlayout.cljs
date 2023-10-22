@@ -2,7 +2,6 @@
   (:require
    [ui.gridlayout :refer [gridlayout]]))
 
-
 (defn grid-layout-page [{:keys [route-params query-params handler] :as route}]
   [:div.bg-green-300 {:style {:width 1000
                               :height 600}}
