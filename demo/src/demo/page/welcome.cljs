@@ -44,6 +44,8 @@
    [:a {:href "/spaces/main"} [:p "layout"]]
    [:a {:href "description-list"} [:p "Description List"]]
    [:a {:href "grid-layout"} [:p "Grid Layout"]]
-   [:a {:href "spaces/main"} [:p "Spaces Layout"]]])
+   [:a {:href "spaces/main"} [:p "Spaces Layout"]]
+   [:a {:href "/sidebartree"} [:p "sidebar tree"]]
+   [:a {:href "/devtools"} [:p "devtools"]]])
 
 

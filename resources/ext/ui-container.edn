@@ -1,19 +1,23 @@
 {:name "ui-container"
  ; build
- :lazy true
+ :lazy-sci true
  :cljs-namespace [pinkgorilla.layout.tab
                   pinkgorilla.layout.sidebar
                   ;pinkgorilla.layout.tailsui
                   pinkgorilla.layout.description-list
-                  pinkgorilla.layout.panel]
+                  pinkgorilla.layout.panel
+                  pinkgorilla.layout.sidebar-tree]
  :cljs-ns-bindings {'container {'sidebar  pinkgorilla.layout.sidebar/sidebar
                                 'tab pinkgorilla.layout.tab/tab
                                 ;'tab pinkgorilla.layout.tailsui/tab
                                 ;'tabs pinkgorilla.layout.tailsui/tabs
                                 'description-list pinkgorilla.layout.description-list/description-list
-                                'panel pinkgorilla.layout.panel/panel}}
+                                'panel pinkgorilla.layout.panel/panel
+                                'sidebar-tree pinkgorilla.layout.sidebar-tree/sidebar-tree}}
  ; theme
  :theme {:available  {;:tailsui {true ["tails-ui/dist/index.css"]}
-                      }
+                      :sidebartree {true ["sidebartree.css"
+                                          "https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+                                          ]}}
          :current {;:tailsui false
-                   }}}
+                   :sidebartree true}}}
