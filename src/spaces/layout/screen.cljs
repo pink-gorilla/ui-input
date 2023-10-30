@@ -37,8 +37,8 @@
                                         right right-size right-resizeable
                                         middle]
                                  :or {left-size "25%"
-                                      right-size "25%"
                                       left-resizeable true
+                                      right-size "25%"
                                       right-resizeable true}}]
    ;(println "layout-viewport lrm ...")
   [spaces/viewport
