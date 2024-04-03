@@ -28,7 +28,4 @@
      (into [:ul]
            (map menu items))]]
    [:div.sidebar-main
-      page
-    ]
-   
-   ])
+    page]])

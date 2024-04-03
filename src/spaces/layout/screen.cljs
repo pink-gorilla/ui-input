@@ -25,8 +25,7 @@
                                    left-size "50%"
                                    left-resizeable true
                                    left-scrollable true
-                                   right-scrollable true
-                                   }}]
+                                   right-scrollable true}}]
   ;(println "layout-viewport lrt ...")
   [spaces/viewport
    (if top-resizeable
@@ -39,16 +38,15 @@
     [spaces/fill {:scrollable right-scrollable} right]]])
 
 (defn screen-left-right-middle [{:keys [left left-size left-resizeable left-scrollable
-                                        right right-size right-resizeable right-scrollable 
-                                        middle middle-scrollable ]
+                                        right right-size right-resizeable right-scrollable
+                                        middle middle-scrollable]
                                  :or {left-size "25%"
                                       left-resizeable true
                                       left-scrollable true
                                       right-size "25%"
                                       right-resizeable true
                                       right-scrollable true
-                                      middle-scrollable true
-                                      }}]
+                                      middle-scrollable true}}]
    ;(println "layout-viewport lrm ...")
   [spaces/viewport
    (if left-resizeable
