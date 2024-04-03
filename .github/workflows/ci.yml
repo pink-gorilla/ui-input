@@ -31,7 +31,7 @@ jobs:
       shell: bash
     - name: Install dependencies
       run: |
-        clojure -X:goldly-build :profile '"npm-install"'
+        clojure -X:webly:npm-install
         ./scripts/copy_res.sh
     #- name: clj-kondo
     #  run: clojure -M:lint
@@ -47,6 +47,5 @@ jobs:
       run: |
         git config --global user.email "ci@pinkgorilla.org"
         git config --global user.name "CI/CD"
-        rm src/goldly_bindings_generated.cljs
         clojure -T:build jar
         clojure -T:build deploy

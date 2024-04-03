@@ -33,16 +33,28 @@
 
   ; ci
 
-  :goldly-build ; ci only
-  {:extra-paths ["target/webly" ; to include the sci-bindings info
-                 "demo/src"
-                 "demo/resources"]
-   :extra-deps {org.pinkgorilla/goldly {:mvn/version "0.4.635"}
-                }
-   :exec-fn goldly.app.build/goldly-build
-   :exec-args {:profile "npm-install"
-               :config  ["webly/config.edn" "goldly/config.edn" "demo/config.edn"]}}
-
+   :webly {:extra-deps {org.pinkgorilla/webly {:mvn/version "0.5.657"}
+                      org.pinkgorilla/ui-repl {:mvn/version "0.1.92"}
+                      org.pinkgorilla/ui-input {:mvn/version "0.0.29"} ; react-spaces rnd ...
+                      }
+         :exec-fn webly.app.app/webly-build
+         :exec-args {:config [{:build {:disabled-extensions #{; extensions using sci-configs will not work in webly.
+                                                              "reagent" "re-frame"
+                                                              "funcool-promesa"
+                                                              "applied-science.js-interop"
+                                                                ; webly2 is now in webly. needs to be removed from ui-repl.
+                                                              "webly2"
+                                                              "ui-repl"
+                                                              "cljs-ajax"}}}]
+                     :profile "npm-install"}}
+ 
+ :npm-install {:exec-args {:profile "npm-install"}}
+ :compile {:exec-args {:profile "compile2"}}
+ :release {:exec-args {:profile "release"}}
+ :release-adv {:exec-args {:profile "release-adv"}}
+ :static {:exec-args {:profile "static"}}
+ :ci {:exec-args {:profile "ci"}}
+ 
    ; for demo see README.md or go to "demo" folder and run aliases there.
 
 ;

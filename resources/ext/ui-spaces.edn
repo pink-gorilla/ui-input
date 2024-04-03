@@ -4,7 +4,7 @@
  :cljs-namespace [spaces.core
                   spaces.layout.fixed
                   spaces.layout.screen]
- :cljs-ns-bindings {'spaces {;; top-level-spaces                             ;; spaces is depreciated. use spaces.core
+ :cljs-ns-bindings {'spaces {;; spaces is depreciated. use spaces.core
                              'viewport spaces.core/viewport
                              'fixed spaces.core/fixed
                                                  ;; anchored-spaces
