@@ -7,11 +7,12 @@
   org.pinkgorilla/pinkie {:mvn/version "0.3.17"} ; box
   }
  :aliases
- {;https://github.com/applied-science/deps-library
-  :release
-  {:extra-deps {applied-science/deps-library {:mvn/version "0.4.0"}}
-   :main-opts ["-m" "applied-science.deps-library"]}
-
+  {; github ci  
+   :build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.6"}
+                  slipset/deps-deploy {:mvn/version "0.2.1"}
+                  babashka/fs {:mvn/version "0.0.5"}}
+           :ns-default build}
+   
   ; https://github.com/weavejester/cljfmt
   :cljfmt
   {:extra-deps {cljfmt/cljfmt {:mvn/version "RELEASE"}}
@@ -25,18 +26,10 @@
   {:extra-deps {clj-kondo/clj-kondo {:mvn/version "RELEASE"}}
    :main-opts ["-m" "clj-kondo.main" "--lint" "src"]}
 
-  :outdated
-  {:extra-deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}
-   :main-opts ["-m" "antq.core"]}
-
   :check
   {:extra-deps {athos/clj-check {:git/url "https://github.com/athos/clj-check.git"
                                  :sha "0ca84df1357d71429243b99908303f45a934654c"}}
    :main-opts ["-m" "clj-check.check"]}
-
-  :garamond
-  {:main-opts ["-m" "garamond.main"]
-   :extra-deps {com.workframe/garamond {:mvn/version "0.4.0"}}}
 
   ; ci
 

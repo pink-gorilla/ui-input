@@ -1,5 +1,5 @@
 {:name "ui-rnd"
  ; build
- :lazy-sci true
+ :lazy true
  :cljs-namespace [pinkgorilla.layout.rnd]
  :cljs-ns-bindings {'ui.rnd {'rnd pinkgorilla.layout.rnd/rnd}}}

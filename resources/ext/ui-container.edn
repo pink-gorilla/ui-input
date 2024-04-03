@@ -1,6 +1,6 @@
 {:name "ui-container"
  ; build
- :lazy-sci true
+ :lazy true
  :cljs-namespace [pinkgorilla.layout.tab
                   pinkgorilla.layout.sidebar
                   ;pinkgorilla.layout.tailsui
@@ -13,7 +13,7 @@
                                 ;'tabs pinkgorilla.layout.tailsui/tabs
                                 'description-list pinkgorilla.layout.description-list/description-list
                                 'panel pinkgorilla.layout.panel/panel
-                                'sidebar-tree pinkgorilla.layout.sidebar-tree/sidebar-tree}}
+                                'with-sidebar-menu pinkgorilla.layout.sidebar-tree/with-sidebar-menu}}
  ; theme
  :theme {:available  {;:tailsui {true ["tails-ui/dist/index.css"]}
                       :sidebartree {true ["sidebartree.css"

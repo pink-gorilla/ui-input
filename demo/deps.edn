@@ -10,6 +10,7 @@
   org.pinkgorilla/ui-input {:local/root "../" :deps/manifest :deps}
   org.pinkgorilla/ui-repl {:mvn/version "0.0.73"} ; reagent
   org.pinkgorilla/devtools {:mvn/version "0.0.18"} ; devtools
+  org.pinkgorilla/ui-site {:mvn/version "0.0.29"} ; ipsum
   }
 
  :aliases

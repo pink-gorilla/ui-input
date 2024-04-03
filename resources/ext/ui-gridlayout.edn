@@ -1,6 +1,6 @@
 {:name "ui-gridlayout"
  ; build
- :lazy-sci true
+ :lazy true
  :cljs-namespace [pinkgorilla.layout.gridlayout]
  :cljs-ns-bindings {'ui.gridlayout {'gridlayout pinkgorilla.layout.gridlayout/gridlayout}}
  ; theme

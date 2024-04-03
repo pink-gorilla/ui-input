@@ -9,7 +9,7 @@
                           "layout-viewport-lrm"  demo.page.spaces/spaces-layout-lrm-viewport-page
                           "layout-fixed-lrt"  demo.page.spaces/spaces-layout-lrt-fixed-page
                           "layout-fixed-lrm"  demo.page.spaces/spaces-layout-lrm-fixed-page}
-               "sidebartree" demo.page.sidebartree/sidebartree-page
+               "sidebartree" demo.page.sidebartree/sidebar-page
                }
  
 

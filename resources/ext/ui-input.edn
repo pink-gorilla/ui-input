@@ -1,6 +1,6 @@
 {:name "ui-input"
  ; build
- :lazy-sci true
+ :lazy true
  :cljs-namespace [pinkgorilla.input.button
                   pinkgorilla.input.progressbar
                   pinkgorilla.input.bound]
