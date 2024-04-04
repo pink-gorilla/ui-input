@@ -1,6 +1,6 @@
 {:name "ui-spaces"
  ; build
- :lazy true
+ :lazy false
  :cljs-namespace [spaces.core
                   spaces.layout.fixed
                   spaces.layout.screen]
