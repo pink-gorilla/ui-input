@@ -1,7 +1,7 @@
 (ns pinkgorilla.layout.tab
   (:require
    [reagent.core :as r]
-   [pinkie.box :refer [apply-style]]))
+   [pinkie.ui :refer [apply-box-style]]))
 
 (defn- tab-menu [{:keys [active select-page]
                   :or {active 0}} tabs]
@@ -23,7 +23,7 @@
                                [{} args])
             tabs (partition 2 children)]
         ;(println "tabs: " tabs "props: " props)
-        [:div (apply-style props)
+        [:div (apply-box-style props)
          [tab-menu {:active @active
                     :select-page (fn [i]
                                    ;(println "selected index: " i)
