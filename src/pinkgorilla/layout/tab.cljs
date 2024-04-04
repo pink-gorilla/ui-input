@@ -1,7 +1,7 @@
 (ns pinkgorilla.layout.tab
   (:require
    [reagent.core :as r]
-   [pinkie.ui :refer [apply-box-style]]))
+   [pinkie.ui.core :refer [apply-box-style]]))
 
 (defn- tab-menu [{:keys [active select-page]
                   :or {active 0}} tabs]
