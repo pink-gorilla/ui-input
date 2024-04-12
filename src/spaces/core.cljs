@@ -30,7 +30,7 @@
 
 ;; other
 
-(def fill (wrap spaces/Fill))
+(def fill (wrap-many spaces/Fill))
 (def positioned (wrap spaces/Positioned)) ;A space which can be absolutely placed within a parent space either by top, left, width and height or by top, left, right and bottom.
 
 (def layer (wrap spaces/Layer)) ; Layers allow you to create layers within a parent space

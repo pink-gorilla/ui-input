@@ -4,30 +4,10 @@
  :cljs-namespace [spaces.core
                   spaces.layout.fixed
                   spaces.layout.screen]
- :cljs-ns-bindings {'spaces {;; spaces is depreciated. use spaces.core
-                             'viewport spaces.core/viewport
-                             'fixed spaces.core/fixed
-                                                 ;; anchored-spaces
-                             'left spaces.core/left
-                             'right spaces.core/right
-                             'top spaces.core/top
-                             'bottom spaces.core/bottom
-                             'left-resizeable spaces.core/left-resizeable
-                             'right-resizeable spaces.core/right-resizeable
-                             'top-resizeable spaces.core/top-resizeable
-                             'bottom-resizeable spaces.core/bottom-resizeable
-                                                 ;; other
-                             'fill spaces.core/fill
-                             'positioned spaces.core/positioned
-                             'layer spaces.core/layer
-                             'centered spaces.core/centered
-                             'centered-vertically spaces.core/centered-vertically
-                                                 ;; helper
-                             'description spaces.core/description}
-                    'spaces.core {;; top-level-spaces
+ :cljs-ns-bindings {'spaces.core {;; top-level-spaces
                                   'viewport spaces.core/viewport
                                   'fixed spaces.core/fixed
-                             ;; anchored-spaces
+                                  ;; anchored-spaces
                                   'left spaces.core/left
                                   'right spaces.core/right
                                   'top spaces.core/top
@@ -36,13 +16,13 @@
                                   'right-resizeable spaces.core/right-resizeable
                                   'top-resizeable spaces.core/top-resizeable
                                   'bottom-resizeable spaces.core/bottom-resizeable
-                             ;; other
+                                  ;; other
                                   'fill spaces.core/fill
                                   'positioned spaces.core/positioned
                                   'layer spaces.core/layer
                                   'centered spaces.core/centered
                                   'centered-vertically spaces.core/centered-vertically
-                             ;; helper
+                                  ;; helper
                                   'description spaces.core/description}
                     'spaces.layout.screen {'screen-main-top spaces.layout.screen/screen-main-top
                                            'screen-left-right-top spaces.layout.screen/screen-left-right-top
