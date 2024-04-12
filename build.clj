@@ -36,7 +36,8 @@
 (defn jar [_]
   (b/write-pom opts)
   (b/copy-dir {:src-dirs ["src"
-                          "resources"]
+                          "resources"
+                          "target/node_modules"]
                :target-dir class-dir})
   (b/jar {:class-dir class-dir
           :jar-file jar-file}))
