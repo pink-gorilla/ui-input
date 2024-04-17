@@ -1,11 +1,9 @@
-(ns pinkgorilla.layout.rnd
+(ns ui.rnd
   "resizeable and draggable component"
   (:require
-   [reagent.core :as r]
    ["react-rnd" :refer [Rnd]]))
 
-(defn ^{:category :layout}
-  rnd [data & [child]]
+(defn rnd [data & [child]]
   [:> Rnd data child])
 
 

@@ -4,7 +4,7 @@
          ]
  :deps
  {org.clojure/clojure    {:mvn/version "1.11.1"}
-  org.pinkgorilla/pinkie {:mvn/version "0.5.231"}; box
+  org.pinkgorilla/pinkie {:mvn/version "0.5.232"}; box
   }
  :aliases
  {; github ci  
@@ -33,8 +33,8 @@
 
   ; ci
 
-  :webly {:extra-deps {org.pinkgorilla/webly {:mvn/version "0.5.657"}
-                       org.pinkgorilla/ui-repl {:mvn/version "0.1.92"}}
+  :webly {:extra-deps {org.pinkgorilla/webly {:mvn/version "0.5.671"}
+                       org.pinkgorilla/ui-repl {:mvn/version "0.1.104"}}
           :exec-fn webly.app.app/webly-build
           :exec-args {:config [{:build {:disabled-extensions #{; extensions using sci-configs will not work in webly.
                                                                "reagent" "re-frame"

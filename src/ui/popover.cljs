@@ -1,7 +1,5 @@
-(ns pinkgorilla.layout.popover
-  "   popover
-     placement: left, yop, right, bottom
-   "
+(ns ui.popover
+  "popover. placement: left, yop, right, bottom"
   (:require
    [reagent.core :as r]
    ["@popperjs/core" :refer [createPopper]]))
@@ -12,16 +10,14 @@
 ; ref handling from:
 ; https://gist.github.com/pesterhazy/4d9df2edc303e5706d547aeabe0e17e1
 
-(defn ^{:category :ui}
-  tooltip [{:keys [title content color]}]
+(defn tooltip [{:keys [title content color]}]
   [:div
    [:div {:class (str "bg-" color "-600 text-white opacity-75 font-semibold p-3 mb-0 border-b border-solid border-gray-200 uppercase rounded-t-lg")}
     title]
    [:div {:class "text-white p-3"}
     content]])
 
-(defn ^{:category :ui}
-  popover [{:keys [color placement button-text]} child]
+(defn  popover [{:keys [color placement button-text]} child]
   (let [popover? (r/atom false)
         btn (r/atom nil)
         popover (r/atom nil)

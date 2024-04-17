@@ -1,11 +1,10 @@
-(ns pinkgorilla.layout.gridlayout
+(ns ui.gridlayout
   (:require
    ["react-grid-layout" :as ReactGridLayout]))
 
 ; https://github.com/STRML/react-grid-layout
 
-(defn ^{:category :layout}
-  gridlayout [data & children]
+(defn gridlayout [data & children]
   [:<>
    [:> ReactGridLayout data
     children]])
