@@ -9,7 +9,9 @@
     "a" [:h4 "We love the A-team !"]
     "b" [:h4 "Bananas are a great potassium source!"]]
 
-   [tab {:box :md :class "bg-green-300"}
+   [tab {:class "bg-green-300"
+         :style {:height "400px"
+                 :width "400px"}}
     "a"
     [:h4 "We love the A-team !"]
     "b"

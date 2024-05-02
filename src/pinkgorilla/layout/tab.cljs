@@ -23,13 +23,17 @@
                                [{} args])
             tabs (partition 2 children)]
         ;(println "tabs: " tabs "props: " props)
-        [:div (apply-box-style props)
-         [tab-menu {:active @active
-                    :select-page (fn [i]
+        [:div props
+         [:div {:style {:display "flex"
+                        :flex-direction "column"
+                        :height "100%"
+                        :width "100%"}}
+          [tab-menu {:active @active
+                     :select-page (fn [i]
                                    ;(println "selected index: " i)
-                                   (reset! active i))}
-          tabs]
-         (let [page (nth tabs @active)]
-           (if page
-             (second page)
-             [:div "no tab selected page:" @active]))]))))
+                                    (reset! active i))}
+           tabs]
+          (let [page (nth tabs @active)]
+            (if page
+              (second page)
+              [:div "no tab selected page:" @active]))]]))))
