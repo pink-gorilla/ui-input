@@ -1,13 +1,10 @@
 {:name "ui-input"
  ; build
  :lazy true
- :cljs-namespace [pinkgorilla.input.button
-                  pinkgorilla.input.progressbar
-                  pinkgorilla.input.bound]
- :cljs-ns-bindings {'input {'button pinkgorilla.input.button/button
-                            'progressbar pinkgorilla.input.progressbar/progressbar
+ :cljs-namespace [input]
+ :cljs-ns-bindings {'input {'button input/button
+                            'progressbar input/progressbar
                             ;input bound
-                            'textbox pinkgorilla.input.bound/text-a
-                            'select pinkgorilla.input.bound/select-a
-                            'checkbox pinkgorilla.input.bound/checkbox-a}
-                    }}
+                            'textbox input/text-a
+                            'select input/select-a
+                            'checkbox input/checkbox-a}}}

@@ -1,7 +1,7 @@
 (ns demo.page.sidebartree
   (:require
    [reagent.core :as r]
-   [ipsum] 
+   [ui.site.ipsum :refer [random-paragraph]]
    [container :refer [with-sidebar-menu]]))
 
 (defn welcome []
@@ -16,7 +16,7 @@
           }
     "fulfillment"
     [:div.w-full.h-full 
-      [ipsum/random-paragraph 50] 
+      [random-paragraph 50] 
      ]
     ]]
   )

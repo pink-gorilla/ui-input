@@ -2,10 +2,11 @@
   (:require
    [reagent.core :as r]
    [input]
-   [input2]
+   [pinkgorilla.input.ionslider-bound :refer [slider-ion-a]]
    [container]
    [demo.lib.link :refer [link-href]]
-   [demo.lib.debounce :refer [save-input-debounced!]]))
+   ;[demo.lib.debounce :refer [save-input-debounced!]]
+   ))
 
 (defn input-page [{:keys [route-params query-params handler] :as route}]
   (let [*state (r/atom {:name "Someone Special"
@@ -23,13 +24,13 @@
          {:style {:grid-template-columns "120px 1fr 120px 1fr"
                   :justify-content "space-between"}}
          ;{:class "flex items-center justify-between"}
-         [:h2 "text"]
-         [input/textbox {:placeholder "Name"
+         #_[:h2 "text"]
+         #_[input/textbox {:placeholder "Name"
                       ;:on-change save-input!
                          :on-change save-input-debounced!}
           *state [:name]]
-         [:h2 "text-w-64"]
-         [input/textbox {:placeholder "Name"
+         #_[:h2 "text-w-64"]
+         #_[input/textbox {:placeholder "Name"
                          :class "w-64"
                       ;:on-change save-input!
                          :on-change save-input-debounced!}
@@ -71,9 +72,9 @@
          ; shiny equivalent:
         ; sliderInput ("n", label = "Number of samples", min = 2, max = 1000, value = 100)
          [:div
-          [input2/slider {:min 1 :max 10} *state [:a]]
-          [input2/slider {:min 1 :max 10} *state [:b]]
-          [input2/slider {:min 1000 :max 100000 :step 500} *state [:c]]]
+          [slider-ion-a {:min 1 :max 10} *state [:a]]
+          [slider-ion-a {:min 1 :max 10} *state [:b]]
+          [slider-ion-a {:min 1000 :max 100000 :step 500} *state [:c]]]
 
          [:p "flexbox test"]
          [:div.flex.flex-row.w-full

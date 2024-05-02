@@ -33,17 +33,10 @@
 
   ; ci
 
-  :webly {:extra-deps {org.pinkgorilla/webly {:mvn/version "0.5.671"}
-                       org.pinkgorilla/ui-repl {:mvn/version "0.1.104"}}
+  :webly {:extra-deps {org.pinkgorilla/webly {:mvn/version "0.5.689"}
+                       org.pinkgorilla/ui-repl {:mvn/version "0.1.105"}}
           :exec-fn webly.app.app/webly-build
-          :exec-args {:config [{:build {:disabled-extensions #{; extensions using sci-configs will not work in webly.
-                                                               "reagent" "re-frame"
-                                                               "funcool-promesa"
-                                                               "applied-science.js-interop"
-                                                                ; webly2 is now in webly. needs to be removed from ui-repl.
-                                                               "webly2"
-                                                               "ui-repl"
-                                                               "cljs-ajax"}}}]
+          :exec-args {:config [{:build {:disabled-extensions #{}}}]
                       :profile "npm-install"}}
 
   :npm-install {:exec-args {:profile "npm-install"}}

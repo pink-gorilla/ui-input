@@ -1,6 +1,6 @@
 (ns demo.page.layout
   (:require
-   [ui.webly :refer [dialog notify]]
+   [frontend.dialog :refer [dialog-show]]
    [ui.popover :refer [popover tooltip]]))
 
 (defn my-dialog []
@@ -15,7 +15,7 @@
    [:h2 "dialog window"]
    [:button.bg-blue-300
     {:title "Click to show dialog!"
-     :on-click #(dialog (my-dialog))}
+     :on-click #(dialog-show (my-dialog))}
     "default-size dialog!"]
 
    [:h2 "Popover"]
@@ -31,21 +31,5 @@
               :button-text "trees-r"}
      [tooltip {:color "green"
                :title  "tree"
-               :content "How many trees are in a forest?"}]]]
-
-;[:h2.mt-5 "Tabs"]
-   #_[:div
-      (container/tab
-       "a" [:h4 "We love the A-team !"]
-       "b" [:h4 "Bananas are a great potassium source!"])
-
-      [container/tab {:box :md :class "bg-green-300"}
-       "a"
-       [:h4 "We love the A-team !"]
-       "b"
-       [:h4 "Bananas are a great potassium source!"]
-       "c"
-       [:h4 "Christmas or santa claus?"]
-       "d"
-       [:h4 "do it. just  do it"]]]])
+               :content "How many trees are in a forest?"}]]]])
 

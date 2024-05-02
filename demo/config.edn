@@ -1,11 +1,4 @@
-{:goldly {:watch-cljs-dir ["src/demo/page"]
-          :routes {:app {} ; demo route are in demo/resources/Ext/app.edn
-                   :api {}}}
- 
- 
-  :reval {:collections {:ui-input [:cljs "notebook/"]
-                        ;:demo [:clj "demo/notebook/"]
-                        :demo-cljs [:cljs "demo/notebook/"]
-                       }}
+{
+
  
  }

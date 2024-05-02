@@ -4,10 +4,9 @@
    [re-frame.core :as rf]
    [input]
    [ui.rnd :refer [rnd]]
-   [demo.lib.debounce :refer [save-input-debounced!]]))
+   ;[demo.lib.debounce :refer [save-input-debounced!]]
+   ))
 
-(rf/dispatch [:css/set-theme-component :tailwind-full "light"])
-(rf/dispatch [:css/set-theme-component :tailwind-girouette false])
 
 (defn info-content []
   (let [*state (r/atom {:name "Peter"})]
@@ -16,7 +15,8 @@
        [:h1 "INFO !!!"]
        [input/textbox {:placeholder "Name"
                           ;:on-change save-input!
-                       :on-change save-input-debounced!}
+                       ;:on-change save-input-debounced!
+                       }
         *state [:name]]
        [input/button {:on-click #(js/alert (str (:name @*state) " is traveling to Hawai!"))} "Travel!"]])))
 
@@ -46,6 +46,8 @@
    [:a {:href "grid-layout"} [:p "Grid Layout"]]
    [:a {:href "spaces/main"} [:p "Spaces Layout"]]
    [:a {:href "/sidebartree"} [:p "sidebar tree"]]
-   [:a {:href "/devtools"} [:p "devtools"]]])
+   [:a {:href "/devtools"} [:p "devtools"]]
+   [:a {:href "/tab"} [:p "tab"]]
+   ])
 
 

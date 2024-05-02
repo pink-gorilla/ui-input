@@ -4,30 +4,29 @@
          ]
  :deps
  {org.clojure/clojure    {:mvn/version "1.11.1"}
-  ; goldly
-  org.pinkgorilla/goldly {:mvn/version "0.4.635"}
-  ; goldly extensions
+  ; webly
+  org.pinkgorilla/webly {:mvn/version "0.5.689"}
+  ; extensions
   org.pinkgorilla/ui-input {:local/root "../" :deps/manifest :deps}
-  org.pinkgorilla/ui-repl {:mvn/version "0.0.73"} ; reagent
-  org.pinkgorilla/devtools {:mvn/version "0.0.18"} ; devtools
-  org.pinkgorilla/ui-site {:mvn/version "0.0.29"} ; ipsum
+  org.pinkgorilla/ui-repl {:mvn/version "0.1.105"} ; reagent
+  org.pinkgorilla/ui-site {:mvn/version "0.0.31"}; ipsum
+  org.pinkgorilla/ui-dialog-keybindings {:mvn/version "0.1.10"} ; notification
   }
 
  :aliases
- {:demo {:exec-fn modular.system/start!
-         :exec-args {:profile "jetty"
-                     :config ["webly/config.edn"
-                              "goldly/config.edn"
-                              "config.edn"]
-                     :services "goldly/services.edn"}}
+ {:webly {:exec-fn webly.app.app/webly-build
+          :exec-args {:config [{:build {:disabled-extensions #{}}}]
+                      :profile "npm-install"}}
 
-  :npm-install
-  {:exec-fn goldly.app.build/goldly-build
-   :exec-args {:profile "npm-install"}}
-
-  :compile
-  {:exec-fn goldly.app.build/goldly-build
-   :exec-args {:profile "compile2"}}}}
+  :npm-install {:exec-args {:profile "npm-install"}}
+  :compile {:exec-args {:profile "compile2"}}
+  :release {:exec-args {:profile "release"}}
+  :release-adv {:exec-args {:profile "release-adv"}}
+  :static {:exec-args {:profile "static"}}
+  :ci {:exec-args {:profile "ci"}}
+  :run {:exec-fn modular.system/start!
+        :exec-args {:profile "jetty"
+                    :services "demo-services.edn"}}}}
 
 
  

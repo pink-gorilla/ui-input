@@ -1,19 +1,16 @@
 {:name "ui-container"
  ; build
  :lazy true
- :cljs-namespace [pinkgorilla.layout.tab
-                  pinkgorilla.layout.sidebar
+ :cljs-namespace [container
                   ;pinkgorilla.layout.tailsui
-                  pinkgorilla.layout.description-list
-                  pinkgorilla.layout.panel
-                  pinkgorilla.layout.sidebar-tree]
- :cljs-ns-bindings {'container {'sidebar  pinkgorilla.layout.sidebar/sidebar
-                                'tab pinkgorilla.layout.tab/tab
+                  ]
+ :cljs-ns-bindings {'container {'sidebar  container/sidebar
+                                'tab container/tab
                                 ;'tab pinkgorilla.layout.tailsui/tab
                                 ;'tabs pinkgorilla.layout.tailsui/tabs
-                                'description-list pinkgorilla.layout.description-list/description-list
-                                'panel pinkgorilla.layout.panel/panel
-                                'with-sidebar-menu pinkgorilla.layout.sidebar-tree/with-sidebar-menu}}
+                                'description-list container/description-list
+                                'panel container/panel
+                                'with-sidebar-menu container/with-sidebar-menu}}
  ; theme
  :theme {:available  {;:tailsui {true ["tails-ui/dist/index.css"]}
                       :sidebartree {true ["sidebartree.css"

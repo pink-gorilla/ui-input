@@ -2,7 +2,7 @@
  ; build
  :lazy true
  :cljs-namespace [pinkgorilla.input.ionslider-bound]
- :cljs-ns-bindings {'input2 {'slider pinkgorilla.input.ionslider-bound/slider-ion-a}}
+ :cljs-ns-bindings {'pinkgorilla.input.ionslider-bound {'slider-ion-a pinkgorilla.input.ionslider-bound/slider-ion-a}}
  ; theme
  :theme {:available  {:ionslider {true ["ion-rangeslider/css/ion.rangeSlider.min.css"]}}
          :current {:ionslider true}}}
