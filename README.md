@@ -49,9 +49,9 @@
 
 ```
 cd demo
-clojure -X:demo:npm-install"
-clojure -X:demo:compile
-clojure -X:demo
+clojure -X:webly:npm-install"
+clojure -X:webly:compile
+clojure -X:webly:run
 ```
 
 Navigate your webbrowser to port 8080. 

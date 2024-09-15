@@ -4,6 +4,7 @@
    [re-frame.core :as rf]
    [input]
    [ui.rnd :refer [rnd]]
+   [ui.overlay :as overlay]
    ;[demo.lib.debounce :refer [save-input-debounced!]]
    ))
 
@@ -35,10 +36,20 @@
     ;[:h1 "asdf"]
    [info-content]])
 
+
+(defn hello []
+  [:h1 "hello - overlay."])
+
+
 (defn welcome-page [{:keys [route-params query-params handler] :as route}]
   [:div
    [info-box]
    [:h1 "ui-input demos"]
+
+   [:a {:on-click #(overlay/overlay-add "6969" [hello])} 
+    [:p "overlay-add"]]
+   [:a {:on-click #(overlay/overlay-remove "6969")}
+    [:p "overlay-remove"]]
 
    [:a {:href "input"} [:p "input"]]
    [:a {:href "/spaces/main"} [:p "layout"]]
