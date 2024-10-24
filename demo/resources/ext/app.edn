@@ -1,12 +1,13 @@
 {:name "demo-app"
  :lazy true
  :depends-on #{:ui-container :ui-input :ui-ionslider :ui-popover
-               :ui-rnd :ui-gridlayout :ui-site}
+               :ui-rnd :ui-gridlayout :ui-flexlayout :ui-site}
  :cljs-namespace [demo.page.welcome
                   demo.page.input
                   demo.page.desclist
                   demo.page.layout
                   demo.page.gridlayout
+                  demo.page.flexlayout
                   demo.page.spaces
                   demo.page.sidebartree
                   demo.page.tab]
@@ -15,6 +16,7 @@
                     'demo.page.desclist {'desclist-page  demo.page.desclist/desclist-page}
                     'demo.page.layout {'layout-page  demo.page.layout/layout-page}
                     'demo.page.gridlayout {'grid-layout-page  demo.page.gridlayout/grid-layout-page}
+                    'demo.page.flexlayout {'flex-layout-page demo.page.flexlayout/flex-layout-page}
                     'demo.page.spaces {'spaces-page  demo.page.spaces/spaces-page}
                     'demo.page.sidebartree {'sidebar-page  demo.page.sidebartree/sidebar-page}
                     'demo.page.tab {'tab-page  demo.page.tab/tab-page}}
@@ -24,6 +26,7 @@
                "description-list" demo.page.desclist/desclist-page
                "layout" demo.page.layout/layout-page
                "grid-layout" demo.page.gridlayout/grid-layout-page
+               "flex-layout" demo.page.flexlayout/flex-layout-page
                "spaces/" {"main" demo.page.spaces/spaces-page
                           "layout-viewport-lrt"  demo.page.spaces/spaces-layout-lrt-viewport-page
                           "layout-viewport-lrm"  demo.page.spaces/spaces-layout-lrm-viewport-page

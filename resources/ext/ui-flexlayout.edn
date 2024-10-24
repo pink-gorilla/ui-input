@@ -1,0 +1,9 @@
+{:name "ui-flexlayout"
+ ; build
+ :lazy true
+ :cljs-namespace [ui.flexlayout]
+ :cljs-ns-bindings {'ui.flexlayout {'layout ui.flexlayout/layout}
+                    }
+
+ :theme {:available  {:flexlayout {true ["flexlayout-react/style/light.css"]}}
+         :current {:flexlayout true}}}

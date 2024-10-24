@@ -1,7 +1,6 @@
 (ns demo.page.welcome
   (:require
    [reagent.core :as r]
-   [re-frame.core :as rf]
    [input]
    [ui.rnd :refer [rnd]]
    [ui.overlay :as overlay]
@@ -55,6 +54,7 @@
    [:a {:href "/spaces/main"} [:p "layout"]]
    [:a {:href "description-list"} [:p "Description List"]]
    [:a {:href "grid-layout"} [:p "Grid Layout"]]
+   [:a {:href "flex-layout"} [:p "Flex Layout"]]
    [:a {:href "spaces/main"} [:p "Spaces Layout"]]
    [:a {:href "/sidebartree"} [:p "sidebar tree"]]
    [:a {:href "/devtools"} [:p "devtools"]]

@@ -16,5 +16,10 @@
 
   "react-spaces" "^0.4.1" ; layout-system
 
+  "flexlayout-react" "0.8.1" ; tab/layout system
+
+  "react" "^18.0.0"
+  "react-dom" "^18.0.0 "
+
  ;
   }}

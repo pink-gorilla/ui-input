@@ -5,23 +5,43 @@
  :deps
  {org.clojure/clojure    {:mvn/version "1.11.1"}
   ; webly
-  org.pinkgorilla/webly {:mvn/version "0.5.689"}
+  org.pinkgorilla/webly {:mvn/version "0.7.702"} ; build tool
   ; extensions
   org.pinkgorilla/ui-input {:local/root "../" :deps/manifest :deps}
-  org.pinkgorilla/ui-repl {:mvn/version "0.1.105"} ; reagent
+  org.pinkgorilla/ui-repl {:mvn/version "0.1.109"} ; reagent
   org.pinkgorilla/ui-site {:mvn/version "0.0.31"}; ipsum
   org.pinkgorilla/ui-dialog-keybindings {:mvn/version "0.1.10"} ; notification
   }
 
  :aliases
- {:webly {:exec-fn webly.app.app/webly-build
-          :exec-args {:config [{:build {:disabled-extensions #{}}}]
-                      :profile "npm-install"}}
+ {;; WATCH
+  :npm-install
+  {:exec-fn webly.app.app/webly-build
+   :config {}
+   :exec-args {:profile "npm-install"}}
+  :demo
+  {:exec-fn modular.system/start!
+   :exec-args {;:profile "jetty"
+               :profile "watch"
+               :config {}
+               :services "demo-services.edn"}}
 
-  :npm-install {:exec-args {:profile "npm-install"}}
-  :compile {:exec-args {:profile "compile2"}}
-  :release {:exec-args {:profile "release"}}
-  :release-adv {:exec-args {:profile "release-adv"}}
+           ;; BUILD / SERVE
+
+  :compile {:exec-fn webly.app.app/webly-build
+            :config {}
+            :exec-args {:profile "compile"}}
+
+  :release-adv {:exec-fn webly.app.app/webly-build
+                :config {}
+                :exec-args {:profile "release-adv"}}
+
+  :jetty
+  {:exec-fn modular.system/start!
+   :exec-args {:profile "jetty"
+               :config {}
+               :services "demo-services.edn"}}
+
   :static {:exec-args {:profile "static"}}
   :ci {:exec-args {:profile "ci"}}
   :run {:exec-fn modular.system/start!
