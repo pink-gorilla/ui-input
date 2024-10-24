@@ -42,6 +42,8 @@
  ;         add-node-action (FlexLayout.Actions.addNode node (.getId tabset-node) (.-CENTER FlexLayout.DockLocation) -1)]
  ;     (.doAction ^js model add-node-action)))))
 
+; cell-id (.getId node)
+
 (defn tab-button-title [{:keys [cell-id]}]
   [:span (str cell-id)])
 

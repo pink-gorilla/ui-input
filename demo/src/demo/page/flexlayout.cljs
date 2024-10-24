@@ -4,7 +4,9 @@
 
 (def model
   {:global {:tabEnableRename false
-            :tabEnableClose false}
+            :tabEnableClose false
+            :tabEnableFloat true
+            }
    :layout {:type "row"
             :weight 100
             :children [{:type "tabset"
