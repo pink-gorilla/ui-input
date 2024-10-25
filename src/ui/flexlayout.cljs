@@ -70,18 +70,17 @@
 
 (defn make-handle-action [{:keys [selected-id-a] :as state}]
   (fn handle-action [^js action]
-                     (when (= Actions.SELECT_TAB (.-type action))
-                       (let [cell-id (-> action .-data .-tabNode)]
-                         (println "selected tab: " cell-id)    
-                         (reset! selected-id-a cell-id)
-                         js/undefined
-                       ))
+    (when (= Actions.SELECT_TAB (.-type action))
+      (let [cell-id (-> action .-data .-tabNode)]
+        (println "selected tab: " cell-id)
+        (reset! selected-id-a cell-id)
+        js/undefined))
                     ; (if (= FlexLayout.Actions.DELETE_TAB (.-type action))
                     ;   (let [cell-id (-> action .-data .-node)]
                     ;     (println "cell deleted: " cell-id)   
                     ;     js/undefined)
                     ;   action
-                     action))
+    action))
 
 (defn add-node [{:keys [layout option-a edit-a model-a]} {:keys [id options edit] :as node}]
   (when (and layout @layout)
@@ -93,18 +92,16 @@
     (println "adding new node to layout..")
     (let [tabset (or (.getActiveTabset  ^Model @model-a)
                      (.getFirstTabSet  ^Model @model-a))]
-    #_(.addTabToActiveTabSet
-     ^Model
-     @layout
-     (clj->js node))
-      
-     (.addTabToTabSet
-      ^Model
-      @layout
-      (.getId ^TabSetNode tabset)
-      (clj->js node)))))
+      #_(.addTabToActiveTabSet
+         ^Model
+         @layout
+         (clj->js node))
 
-
+      (.addTabToTabSet
+       ^Model
+       @layout
+       (.getId ^TabSetNode tabset)
+       (clj->js node)))))
 
 (defmulti component-ui  (fn [e] (:component e)))
 
@@ -113,9 +110,8 @@
   (ratom/make-reaction
    (fn [] (get @option-a cell-id))))
 
-
 (defn component-panel [comp options-a]
-   [comp @options-a])
+  [comp @options-a])
 
 (defn make-factory [{:keys [option-a] :as state}]
   (fn [^js node]
@@ -124,8 +120,7 @@
           comp (component-ui {:id cell-id
                               :component component
                               :state state})
-          options-for-component (subscribe-options option-a cell-id)
-          ]
+          options-for-component (subscribe-options option-a cell-id)]
       (println "creating component " component " id: " cell-id)
       (r/as-element [component-panel comp options-for-component])
       ;(r/as-element (component-panel comp options-for-component))
@@ -135,8 +130,7 @@
 
 (defn create-model [{:keys [model options edit]
                      :or {options {}
-                          edit {}
-                          }}]
+                          edit {}}}]
   (let [layout (clojure.core/atom nil)
         model-a (clojure.core/atom nil)
         state {:layout layout ; react-ref goes here
@@ -144,13 +138,11 @@
                :model-a model-a
                :option-a (reagent.core/atom options)
                :edit-a (reagent.core/atom edit)
-               :selected-id-a (reagent.core/atom nil)
-               }]
-    state
-    ))
+               :selected-id-a (reagent.core/atom nil)}]
+    state))
 
 (defn get-data [{:keys [model-a edit-a option-a]}]
-  {:model (js->clj (.toJson ^Model @model-a) )
+  {:model (js->clj (.toJson ^Model @model-a))
    :options @option-a
    :edit @edit-a})
 
@@ -162,12 +154,12 @@
                   clj->js
                   (Model.fromJson))]
     (reset! (:model-a state) model)
-  [:> Layout {:model model
-              :ref (fn [el]
-                     (reset! layout el))
-              :factory (make-factory state)
-              :titleFactory title-factory
-              :onAction (make-handle-action state)}]))
+    [:> Layout {:model model
+                :ref (fn [el]
+                       (reset! layout el))
+                :factory (make-factory state)
+                :titleFactory title-factory
+                :onAction (make-handle-action state)}]))
 
 ;; DEFAULT UI COMPONENTS
 
@@ -216,14 +208,15 @@
        [:br]
        [:p "selected cell: " @selected-id-a]
        [:br]
-       [:p "selected options: " (pr-str @selected-options-a)]
        (if (and @selected-edit-a @selected-options-a)
-        [oui/options-ui2 {:class "options-label-left"
-                          :edit @selected-edit-a
-                          :state selected-options-a
-                          :set-fn (fn [path v]
-                                    (if option-a 
-                                       (swap! option-a assoc-in [@selected-id-a path] v)   
-                                       (println "cannot set options .. option-a is nil")))}] 
-        [:p.bg-red-500 
-          "this component does not have a edit-spec"])])))
+         [oui/options-ui2 {:class "options-label-left"
+                           :edit @selected-edit-a
+                           :state selected-options-a
+                           :set-fn (fn [path v]
+                                     (if option-a
+                                       (swap! option-a assoc-in [@selected-id-a path] v)
+                                       (println "cannot set options .. option-a is nil")))}]
+         [:div.bg-red-500
+          "this component does not have a edit-spec"
+          [:hr]
+          (pr-str @selected-options-a)])])))

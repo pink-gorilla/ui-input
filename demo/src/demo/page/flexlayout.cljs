@@ -5,8 +5,8 @@
    ))
 
 (def model
-  {:global {:tabEnableRename false
-            :tabEnableClose false
+  {:global {:tabEnableRename true
+            :tabEnableClose true
             :tabEnableFloat true
             :tabSetEnableActiveIcon true}
    :layout {:type "row"
