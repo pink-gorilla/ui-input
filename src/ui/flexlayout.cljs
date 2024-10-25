@@ -185,6 +185,18 @@
               :width "100%"
               :height "100%"}]))
 
+(defmethod component-ui "text" [{:keys [id]}]
+  ;[:div.bg-blue-100 "url: " (str options) "..."
+  (fn [options]
+    [:textarea {:title id
+                :defaultValue options
+                :style {:position "absolute"
+                        :width "100%"
+                        :height "100%"
+                        :resize "none"
+                        :boxSizing "border-box"
+                        :border "none"}}]))
+
 ;; COMPONENT: OPTION-UI 
 
 (defn subscribe-selected-options [{:keys [option-a selected-id-a] :as state}]
