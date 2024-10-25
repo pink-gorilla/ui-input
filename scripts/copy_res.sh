@@ -16,3 +16,4 @@ cpr () {
 cpr "react-grid-layout/css" "*.css"
 cpr "react-resizable/css" "*.css"
 cpr "react-spaces/dist" "*.css"
+cpr "flexlayout-react/style" "*.css"

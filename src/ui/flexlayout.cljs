@@ -2,7 +2,8 @@
   (:require
    [reagent.core :as r]
    [reagent.ratom :as ratom]
-   ["flexlayout-react" :refer [Layout Model Actions]]))
+   ["flexlayout-react" :refer [Layout Model Actions]]
+   [options.core :as oui]))
 
 ;; https://www.npmjs.com/package/flexlayout-react
 ;; 20k weekly downloads from npm
@@ -82,14 +83,13 @@
                     ;   action
                      action))
 
-(defn add-node [{:keys [layout option-a option-edit-a]} {:keys [id options current] :as node}]
+(defn add-node [{:keys [layout option-a edit-a]} {:keys [id options edit] :as node}]
   (when (and layout @layout)
     (println "new node: " id " options: " options)
     (when (and options id)
-      (if current
-        (swap! option-edit-a assoc id {:options options
-                                       :current current})
-        (swap! option-a assoc id options)))
+      (when edit
+        (swap! edit-a assoc id edit))
+      (swap! option-a assoc id options))
     (println "adding new node to layout..")
     (.addTabToActiveTabSet
      @layout
@@ -102,10 +102,7 @@
   (ratom/make-reaction
    (fn [] (get @option-a cell-id))))
 
-(defn subscribe-selected-options [{:keys [option-a selected-id-a] :as state}]
-  ;(ratom/cursor option-a cell-id)
-  (ratom/make-reaction
-   (fn [] (get @option-a @selected-id-a))))
+
 
 (defn make-factory [{:keys [option-a] :as state}]
   (fn [^js node]
@@ -126,12 +123,10 @@
 (defn create-model [{:keys [model options]
                      :or {options {}}}]
   (let [layout (clojure.core/atom nil)
-        option-a (clojure.core/atom options)
-        edit-a (clojure.core/atom {})
         state {:layout layout ; react-ref goes here
                :model model
-               :option-a option-a
-               :edit-a edit-a
+               :option-a (reagent.core/atom options)
+               :edit-a (reagent.core/atom {})
                :selected-id-a (reagent.core/atom nil)
                }]
     state
@@ -175,20 +170,39 @@
      "I am panel id: " (str id)
      "options: " (pr-str options)]))
 
+
+(defn options-ui [{:keys [class style
+                          state 
+                          edit
+                          ]}] 
+    (into [:div {:style style
+                 :class class}]
+          (map #(oui/create-edit-element state %) edit)))
+
+(defn subscribe-selected-options [{:keys [option-a selected-id-a] :as state}]
+  ;(ratom/cursor option-a cell-id)
+  (ratom/make-reaction
+   (fn [] (get @option-a @selected-id-a))))
+
+(defn subscribe-selected-edit [{:keys [edit-a selected-id-a] :as state}]
+  ;(ratom/cursor option-a cell-id)
+  (ratom/make-reaction
+   (fn [] (get @edit-a @selected-id-a))))
+
 (defmethod component-ui "option" [{:keys [id state]}]
   (let [selected-id-a (:selected-id-a state)
         selected-options-a (subscribe-selected-options state)
+        selected-edit-a (subscribe-selected-edit state)
         ]
     (fn [options]
-      #_[options-ui {:class "bg-blue-300 options-debug"
-                     :style {:width "50vw"
-                             ;:height "40vh"
-                             }}config]
       [:div.bg-blue-500.w-full.h-full
        [:p "option-ui"]
        [:br]
        [:p "selected cell: " @selected-id-a]
        [:br]
        [:p "selected options: " (pr-str @selected-options-a)]
-       
-       ])))
+       (if (and @selected-edit-a @selected-options-a)
+        [options-ui {:edit @selected-edit-a
+                     :state selected-options-a}] 
+        [:p.bg-red-500 
+          "this component does not have a edit-spec"])])))
