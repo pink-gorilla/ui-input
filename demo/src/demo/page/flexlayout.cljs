@@ -23,11 +23,11 @@
                         :selected 1
                         :children
                         [{:type "tab"
-                          :name "One"
+                          :name "wikipedia"
                           :component "url"
                           :icon "/r/images/add.svg"
                           :helpText "this tab has helpText defined"
-                          :id "50"}
+                          :id "wikipedia1"}
                          {:type "tab"
                           :name "two"
                           :component "panel"
@@ -40,8 +40,9 @@
                           :name "5"
                           :component "panel"}
                          {:type "tab"
-                          :name "4"
-                          :component "panel"}]}]}
+                          :name "text"
+                          :id "text99"
+                          :component "text"}]}]}
    :borders [{:type "border"
               ;:selected 13,
               :size 350
@@ -54,8 +55,10 @@
 
 (def m (create-model
         {:model model
-         :options {"50" "https://en.wikipedia.org/wiki/Main_Page"
-                   "100" 10000}}))
+         :options {"wikipedia1" "https://en.wikipedia.org/wiki/Main_Page"
+                   "100" 10000
+                   "text99" "hello\r\nI come from the options!"
+                   }}))
 
 (set! (.-model js/window) m)
 

@@ -6,8 +6,9 @@
                                     'layout ui.flexlayout/layout
                                     'add-node ui.flexlayout/add-node
                                     'get-data ui.flexlayout/get-data
-                                    }
-                    }
+                                    'component-ui ui.flexlayout/component-ui}}
 
  :theme {:available  {:flexlayout {true ["flexlayout-react/style/light.css"]}}
          :current {:flexlayout true}}}
+
+
