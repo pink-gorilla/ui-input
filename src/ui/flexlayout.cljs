@@ -75,11 +75,14 @@
                     ;   action
                      action))
 
-(defn add-node [{:keys [layout option-a]} {:keys [id options] :as node}]
+(defn add-node [{:keys [layout option-a option-edit-a]} {:keys [id options current] :as node}]
   (when (and layout @layout)
     (println "new node: " id " options: " options)
     (when (and options id)
-      (swap! option-a assoc id options))
+      (if current 
+         (swap! option-edit-a assoc id {:options options 
+                                        :current current})
+         (swap! option-a assoc id options)))
     (println "adding new node to layout..")
     (.addTabToActiveTabSet
      @layout
@@ -87,51 +90,58 @@
 
 (defmulti component-ui  (fn [e] (:component e)))
 
-(defmethod component-ui :default [{:keys [component
-                                          id
-                                          options]}]
-  [:div "I am node id: " (str id)
-   "component: " component
-   "options: " (pr-str options)])
+(defmethod component-ui :default [{:keys [component id]}]
+  (fn [options]
+    [:div "I am node id: " (str id)
+     "component: " component
+     "options: " (pr-str options)]))
 
-(defmethod component-ui "url" [{:keys [id options]}]
+(defmethod component-ui "url" [{:keys [id]}]
   ;[:div.bg-blue-100 "url: " (str options) "..."
-  [:iframe {:title id
-            :src options
-            :style {:display "block"
-                    :border "none"
-                    :boxSizing "border-box"}
-            :width "100%"
-            :height "100%"}]
-;   ]
-  )
+   (fn [options]
+     [:iframe {:title id
+               :src options
+               :style {:display "block"
+                       :border "none"
+                       :boxSizing "border-box"}
+               :width "100%"
+               :height "100%"}]))
+  
 
-(defmethod component-ui "panel" [{:keys [id options]}]
-  [:div.bg-red-300.w-full.h-full
-   "I am panel id: " (str id)
-   "options: " (pr-str options)])
+(defmethod component-ui "panel" [{:keys [id]}]
+  (fn [options]
+    [:div.bg-red-300.w-full.h-full
+     "I am panel id: " (str id)
+     "options: " (pr-str options)]))
+
+
+(defn subscribe-options [option-a cell-id]
+  ;(ratom/cursor option-a cell-id)
+  (ratom/make-reaction
+    (fn [] (get @option-a cell-id))))
+
 
 (defn make-factory [option-a]
   (fn [^js node]
     (let [cell-id (.getId node)
           component (.getComponent node)
-          option (get @option-a cell-id)
-          comp (component-ui {:options option
-                              :id cell-id
+          comp (component-ui {:id cell-id
                               :component component})]
-      (println "cell: " cell-id "option: " option)
+      (println "cell: " cell-id)
       (r/as-element
-       comp
-        ;[cell-panel {:!value (ratom/make-reaction
-        ;                       (fn [] (get @!cells cell-id)))
+        [comp @(subscribe-options option-a cell-id)]
+        ;[cell-panel {:!value)
         ;             :cell-id cell-id}]
        ))))
+
 ;node. getConfig():
 
 (defn create-model [{:keys [model options]
                      :or {options {}}}]
   (let [layout (clojure.core/atom nil)
-        option-a (clojure.core/atom options)]
+        option-a (clojure.core/atom options)
+        edit-a (clojure.core/atom {})
+        ]
     {:model (-> model
                 clj->js
                 (Model.fromJson))
@@ -139,6 +149,7 @@
      :ref (fn [el]
             (reset! layout el))
      :option-a option-a
+     :edit-a edit-a
      :factory (make-factory option-a)
      :titleFactory title-factory
      :onAction handle-action}))
