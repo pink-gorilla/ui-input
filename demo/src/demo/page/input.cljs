@@ -2,7 +2,6 @@
   (:require
    [reagent.core :as r]
    [input]
-   [pinkgorilla.input.ionslider-bound :refer [slider-ion-a]]
    [container]
    [demo.lib.link :refer [link-href]]
    ;[demo.lib.debounce :refer [save-input-debounced!]]
@@ -67,14 +66,6 @@
                  :items ["javascript" "ruby" "clojure" "clojurescript"
                          "ocaml" "scheme" "elixir" "c#" "R" "python"]}
                 *state [:language]]]
-
-         [:h2 "slider"]
-         ; shiny equivalent:
-        ; sliderInput ("n", label = "Number of samples", min = 2, max = 1000, value = 100)
-         [:div
-          [slider-ion-a {:min 1 :max 10} *state [:a]]
-          [slider-ion-a {:min 1 :max 10} *state [:b]]
-          [slider-ion-a {:min 1000 :max 100000 :step 500} *state [:c]]]
 
          [:p "flexbox test"]
          [:div.flex.flex-row.w-full

@@ -2,7 +2,6 @@
   (:require
    ; helper fns
    [pinkgorilla.input.bind :refer [bind]]
-
    [pinkgorilla.input.checkbox :refer [checkbox]]
    [pinkgorilla.input.text :refer [textbox]]
    [pinkgorilla.input.select :refer [select-nav]]))

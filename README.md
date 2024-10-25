@@ -42,9 +42,6 @@
 - ui.popover/popover
 - ui.popover/tooltip 
 
-# iron slider
-- input2/slider
-
 # Demo
 
 ```

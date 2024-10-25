@@ -1,6 +1,6 @@
 {:name "demo-app"
  :lazy true
- :depends-on #{:ui-container :ui-input :ui-ionslider :ui-popover
+ :depends-on #{:ui-container :ui-input :ui-popover
                :ui-rnd :ui-gridlayout :ui-flexlayout :ui-site}
  :cljs-namespace [demo.page.welcome
                   demo.page.input
