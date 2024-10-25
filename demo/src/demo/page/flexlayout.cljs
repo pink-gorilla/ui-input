@@ -15,7 +15,7 @@
                         :weight 50
                         :children [{:type "tab"
                                     :name "One"
-                                    :component "button"
+                                    :component "panel"
                                     :enableClose false,
                                     :icon "/r/images/bar_chart.svg"}]}
                        {:type "tabset"
@@ -44,12 +44,12 @@
                           :component "panel"}]}]}
    :borders [{:type "border"
               ;:selected 13,
-              :size 188,
+              :size 350
               :location "left"
-              :children [{:type "tab",
-                          :id "#1",
-                          :name "Options",
-                          :component "option",
+              :children [{:type "tab"
+                          :id "#1"
+                          :name "Options"
+                          :component "option"
                           :enableClose false}]}]})
 
 (def m (create-model
@@ -68,13 +68,22 @@
           :style {:margin "2px"
                   :display "flex"
                   :align-items "center"}}
+
+    [:button
+     {:on-click #(add-node m {:component "panel"
+                              :icon "/r/images/article.svg",
+                              :name "panel-added"})
+      :style {:border-radius "5px"
+              :border "1px solid lightgray"}}
+     "add panel"]
+
     [:button
      {:on-click #(add-node m {:component "grid"
                               :icon "/r/images/article.svg",
                               :name "Grid-added"})
       :style {:border-radius "5px"
               :border "1px solid lightgray"}}
-     "add node"]
+     "add unknown-component"]
 
     [:button
      {:on-click #(add-node m {:component "url"

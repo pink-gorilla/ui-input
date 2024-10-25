@@ -2,7 +2,7 @@
   (:require
    [reagent.core :as r]
    [reagent.ratom :as ratom]
-   ["flexlayout-react" :refer [Layout Model Actions]]
+   ["flexlayout-react" :refer [Layout Model Actions  TabSetNode]]
    [options.core :as oui]))
 
 ;; https://www.npmjs.com/package/flexlayout-react
@@ -91,8 +91,8 @@
         (swap! edit-a assoc id edit))
       (swap! option-a assoc id options))
     (println "adding new node to layout..")
-    (let [tabset (or (.getActiveTabset @model-a)
-                     (.getFirstTabSet @model-a))]
+    (let [tabset (or (.getActiveTabset  ^Model @model-a)
+                     (.getFirstTabSet  ^Model @model-a))]
     #_(.addTabToActiveTabSet
      ^Model
      @layout
@@ -101,7 +101,7 @@
      (.addTabToTabSet
       ^Model
       @layout
-      (.getId tabset)
+      (.getId ^TabSetNode tabset)
       (clj->js node)))))
 
 
@@ -114,6 +114,8 @@
    (fn [] (get @option-a cell-id))))
 
 
+(defn component-panel [comp options-a]
+   [comp @options-a])
 
 (defn make-factory [{:keys [option-a] :as state}]
   (fn [^js node]
@@ -121,22 +123,23 @@
           component (.getComponent node)
           comp (component-ui {:id cell-id
                               :component component
-                              :state state})]
-      (println "creating cell: " cell-id)
-      (r/as-element
-       [comp @(subscribe-options option-a cell-id)]
-        ;[cell-panel {:!value)
-        ;             :cell-id cell-id}]
-       ))))
+                              :state state})
+          options-for-component (subscribe-options option-a cell-id)
+          ]
+      (println "creating component " component " id: " cell-id)
+      (r/as-element [component-panel comp options-for-component])
+      ;(r/as-element (component-panel comp options-for-component))
+      )))
 
 ;node. getConfig():
 
 (defn create-model [{:keys [model options]
                      :or {options {}}}]
   (let [layout (clojure.core/atom nil)
+        model-a (clojure.core/atom nil)
         state {:layout layout ; react-ref goes here
                :model model
-               :model-a (reagent.core/atom nil)
+               :model-a model-a
                :option-a (reagent.core/atom options)
                :edit-a (reagent.core/atom {})
                :selected-id-a (reagent.core/atom nil)
@@ -161,11 +164,16 @@
 
 ;; DEFAULT UI COMPONENTS
 
+;; COMPONENT: DEFAULT-UI
+
 (defmethod component-ui :default [{:keys [component id]}]
   (fn [options]
-    [:div "I am node id: " (str id)
-     "component: " component
+    [:div.bg-red-500
+     "Error: no component-ui known for component: " component
+     "I am node id: " (str id)
      "options: " (pr-str options)]))
+
+;; COMPONENT: URL
 
 (defmethod component-ui "url" [{:keys [id]}]
   ;[:div.bg-blue-100 "url: " (str options) "..."
@@ -178,20 +186,7 @@
               :width "100%"
               :height "100%"}]))
 
-(defmethod component-ui "panel" [{:keys [id]}]
-  (fn [options]
-    [:div.bg-red-300.w-full.h-full
-     "I am panel id: " (str id)
-     "options: " (pr-str options)]))
-
-
-(defn options-ui [{:keys [class style
-                          state 
-                          edit
-                          ]}] 
-    (into [:div {:style style
-                 :class class}]
-          (map #(oui/create-edit-element state %) edit)))
+;; COMPONENT: OPTION-UI 
 
 (defn subscribe-selected-options [{:keys [option-a selected-id-a] :as state}]
   ;(ratom/cursor option-a cell-id)
@@ -222,8 +217,6 @@
                           :set-fn (fn [path v]
                                     (if option-a 
                                        (swap! option-a assoc-in [@selected-id-a path] v)   
-                                       (println "cannot set options .. option-a is nil")
-                                      )
-                                   )}] 
+                                       (println "cannot set options .. option-a is nil")))}] 
         [:p.bg-red-500 
           "this component does not have a edit-spec"])])))
