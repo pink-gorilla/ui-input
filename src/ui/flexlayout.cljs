@@ -2,7 +2,7 @@
   (:require
    [reagent.core :as r]
    [reagent.ratom :as ratom]
-   ["flexlayout-react" :refer [Layout Model]]))
+   ["flexlayout-react" :refer [Layout Model Actions]]))
 
 ;; https://www.npmjs.com/package/flexlayout-react
 ;; 20k weekly downloads from npm
@@ -67,7 +67,14 @@
 ; SET_ACTIVE_TABSET
 ; UPDATE_MODEL_ATTRIBUTES
 
-(def handle-action (fn [^js action]
+(defn make-handle-action [{:keys [selected-id-a] :as state}]
+  (fn handle-action [^js action]
+                     (when (= Actions.SELECT_TAB (.-type action))
+                       (let [cell-id (-> action .-data .-tabNode)]
+                         (println "selected tab: " cell-id)    
+                         (reset! selected-id-a cell-id)
+                         js/undefined
+                       ))
                     ; (if (= FlexLayout.Actions.DELETE_TAB (.-type action))
                     ;   (let [cell-id (-> action .-data .-node)]
                     ;     (println "cell deleted: " cell-id)   
@@ -79,10 +86,10 @@
   (when (and layout @layout)
     (println "new node: " id " options: " options)
     (when (and options id)
-      (if current 
-         (swap! option-edit-a assoc id {:options options 
-                                        :current current})
-         (swap! option-a assoc id options)))
+      (if current
+        (swap! option-edit-a assoc id {:options options
+                                       :current current})
+        (swap! option-a assoc id options)))
     (println "adding new node to layout..")
     (.addTabToActiveTabSet
      @layout
@@ -90,46 +97,26 @@
 
 (defmulti component-ui  (fn [e] (:component e)))
 
-(defmethod component-ui :default [{:keys [component id]}]
-  (fn [options]
-    [:div "I am node id: " (str id)
-     "component: " component
-     "options: " (pr-str options)]))
-
-(defmethod component-ui "url" [{:keys [id]}]
-  ;[:div.bg-blue-100 "url: " (str options) "..."
-   (fn [options]
-     [:iframe {:title id
-               :src options
-               :style {:display "block"
-                       :border "none"
-                       :boxSizing "border-box"}
-               :width "100%"
-               :height "100%"}]))
-  
-
-(defmethod component-ui "panel" [{:keys [id]}]
-  (fn [options]
-    [:div.bg-red-300.w-full.h-full
-     "I am panel id: " (str id)
-     "options: " (pr-str options)]))
-
-
 (defn subscribe-options [option-a cell-id]
   ;(ratom/cursor option-a cell-id)
   (ratom/make-reaction
-    (fn [] (get @option-a cell-id))))
+   (fn [] (get @option-a cell-id))))
 
+(defn subscribe-selected-options [{:keys [option-a selected-id-a] :as state}]
+  ;(ratom/cursor option-a cell-id)
+  (ratom/make-reaction
+   (fn [] (get @option-a @selected-id-a))))
 
-(defn make-factory [option-a]
+(defn make-factory [{:keys [option-a] :as state}]
   (fn [^js node]
     (let [cell-id (.getId node)
           component (.getComponent node)
           comp (component-ui {:id cell-id
-                              :component component})]
-      (println "cell: " cell-id)
+                              :component component
+                              :state state})]
+      (println "creating cell: " cell-id)
       (r/as-element
-        [comp @(subscribe-options option-a cell-id)]
+       [comp @(subscribe-options option-a cell-id)]
         ;[cell-panel {:!value)
         ;             :cell-id cell-id}]
        ))))
@@ -141,22 +128,67 @@
   (let [layout (clojure.core/atom nil)
         option-a (clojure.core/atom options)
         edit-a (clojure.core/atom {})
-        ]
-    {:model (-> model
-                clj->js
-                (Model.fromJson))
-     :layout layout ; react-ref goes here
-     :ref (fn [el]
-            (reset! layout el))
-     :option-a option-a
-     :edit-a edit-a
-     :factory (make-factory option-a)
-     :titleFactory title-factory
-     :onAction handle-action}))
+        state {:layout layout ; react-ref goes here
+               :model model
+               :option-a option-a
+               :edit-a edit-a
+               :selected-id-a (reagent.core/atom nil)
+               }]
+    state
+    ))
 
 (defn layout
   "The model is tree of Node objects that define the structure of the layout.
    The factory is a function that takes a Node object and returns a React componen"
-  [spec]
-  [:> Layout spec])
+  [{:keys [layout model] :as state}]
+  [:> Layout {:model (-> model
+                         clj->js
+                         (Model.fromJson))
+              :ref (fn [el]
+                     (reset! layout el))
+              :factory (make-factory state)
+              :titleFactory title-factory
+              :onAction (make-handle-action state)}])
 
+;; DEFAULT UI COMPONENTS
+
+(defmethod component-ui :default [{:keys [component id]}]
+  (fn [options]
+    [:div "I am node id: " (str id)
+     "component: " component
+     "options: " (pr-str options)]))
+
+(defmethod component-ui "url" [{:keys [id]}]
+  ;[:div.bg-blue-100 "url: " (str options) "..."
+  (fn [options]
+    [:iframe {:title id
+              :src options
+              :style {:display "block"
+                      :border "none"
+                      :boxSizing "border-box"}
+              :width "100%"
+              :height "100%"}]))
+
+(defmethod component-ui "panel" [{:keys [id]}]
+  (fn [options]
+    [:div.bg-red-300.w-full.h-full
+     "I am panel id: " (str id)
+     "options: " (pr-str options)]))
+
+(defmethod component-ui "option" [{:keys [id state]}]
+  (let [selected-id-a (:selected-id-a state)
+        selected-options-a (subscribe-selected-options state)
+        ]
+    (fn [options]
+      #_[options-ui {:class "bg-blue-300 options-debug"
+                     :style {:width "50vw"
+                             ;:height "40vh"
+                             }}config]
+      [:div.bg-blue-500.w-full.h-full
+       [:p "option-ui"]
+       [:br]
+       [:p "selected cell: " @selected-id-a]
+       [:br]
+       [:p "selected options: " (pr-str @selected-options-a)]
+       
+       ])))

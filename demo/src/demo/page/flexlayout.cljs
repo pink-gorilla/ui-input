@@ -49,8 +49,8 @@
               :location "left"
               :children [{:type "tab",
                           :id "#1",
-                          :name "Activity Blotter",
-                          :component "grid",
+                          :name "Options",
+                          :component "option",
                           :enableClose false}]}]})
 
 (def m (create-model
