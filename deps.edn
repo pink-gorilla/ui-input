@@ -4,7 +4,7 @@
          ]
  :deps
  {org.clojure/clojure    {:mvn/version "1.11.1"}
-  org.pinkgorilla/options {:mvn/version "0.0.10"}
+  org.pinkgorilla/options {:mvn/version "0.0.12"}
   }
  :aliases
  {; github ci  

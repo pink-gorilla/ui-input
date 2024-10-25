@@ -83,7 +83,7 @@
                     ;   action
                      action))
 
-(defn add-node [{:keys [layout option-a edit-a]} {:keys [id options edit] :as node}]
+(defn add-node [{:keys [layout option-a edit-a model-a]} {:keys [id options edit] :as node}]
   (when (and layout @layout)
     (println "new node: " id " options: " options)
     (when (and options id)
@@ -91,9 +91,20 @@
         (swap! edit-a assoc id edit))
       (swap! option-a assoc id options))
     (println "adding new node to layout..")
-    (.addTabToActiveTabSet
+    (let [tabset (or (.getActiveTabset @model-a)
+                     (.getFirstTabSet @model-a))]
+    #_(.addTabToActiveTabSet
+     ^Model
      @layout
-     (clj->js node))))
+     (clj->js node))
+      
+     (.addTabToTabSet
+      ^Model
+      @layout
+      (.getId tabset)
+      (clj->js node)))))
+
+
 
 (defmulti component-ui  (fn [e] (:component e)))
 
@@ -125,6 +136,7 @@
   (let [layout (clojure.core/atom nil)
         state {:layout layout ; react-ref goes here
                :model model
+               :model-a (reagent.core/atom nil)
                :option-a (reagent.core/atom options)
                :edit-a (reagent.core/atom {})
                :selected-id-a (reagent.core/atom nil)
@@ -136,14 +148,16 @@
   "The model is tree of Node objects that define the structure of the layout.
    The factory is a function that takes a Node object and returns a React componen"
   [{:keys [layout model] :as state}]
-  [:> Layout {:model (-> model
-                         clj->js
-                         (Model.fromJson))
+  (let [model (-> model
+                  clj->js
+                  (Model.fromJson))]
+    (reset! (:model-a state) model)
+  [:> Layout {:model model
               :ref (fn [el]
                      (reset! layout el))
               :factory (make-factory state)
               :titleFactory title-factory
-              :onAction (make-handle-action state)}])
+              :onAction (make-handle-action state)}]))
 
 ;; DEFAULT UI COMPONENTS
 
@@ -193,7 +207,7 @@
   (let [selected-id-a (:selected-id-a state)
         selected-options-a (subscribe-selected-options state)
         selected-edit-a (subscribe-selected-edit state)
-        ]
+        option-a (:option-a state)]
     (fn [options]
       [:div.bg-blue-500.w-full.h-full
        [:p "option-ui"]
@@ -202,7 +216,14 @@
        [:br]
        [:p "selected options: " (pr-str @selected-options-a)]
        (if (and @selected-edit-a @selected-options-a)
-        [options-ui {:edit @selected-edit-a
-                     :state selected-options-a}] 
+        [oui/options-ui2 {:class "options-label-left"
+                          :edit @selected-edit-a
+                          :state selected-options-a
+                          :set-fn (fn [path v]
+                                    (if option-a 
+                                       (swap! option-a assoc-in [@selected-id-a path] v)   
+                                       (println "cannot set options .. option-a is nil")
+                                      )
+                                   )}] 
         [:p.bg-red-500 
           "this component does not have a edit-spec"])])))
