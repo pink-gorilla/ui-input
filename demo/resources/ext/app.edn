@@ -1,7 +1,9 @@
 {:name "demo-app"
  :lazy true
  :depends-on #{:ui-container :ui-input :ui-popover
-               :ui-rnd :ui-gridlayout :ui-flexlayout :ui-site}
+               :ui-rnd :ui-gridlayout :ui-flexlayout :ui-site
+               :cljs-frisk
+               }
  :cljs-namespace [demo.page.welcome
                   demo.page.input
                   demo.page.desclist

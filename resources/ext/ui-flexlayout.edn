@@ -5,6 +5,7 @@
  :cljs-ns-bindings {'ui.flexlayout {'create-model ui.flexlayout/create-model
                                     'layout ui.flexlayout/layout
                                     'add-node ui.flexlayout/add-node
+                                    'get-data ui.flexlayout/get-data
                                     }
                     }
 

@@ -85,6 +85,15 @@
               :border "1px solid lightgray"}}
      "add unknown-component"]
 
+     [:button
+     {:on-click #(add-node m {:component "data"
+                              :icon "/r/images/article.svg",
+                              :name "Grid-added"})
+      :style {:border-radius "5px"
+              :border "1px solid lightgray"}}
+     "add data"]
+
+
     [:button
      {:on-click #(add-node m {:component "url"
                               :icon "/r/images/article.svg",

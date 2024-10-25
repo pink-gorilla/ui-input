@@ -11,6 +11,7 @@
   org.pinkgorilla/ui-repl {:mvn/version "0.1.109"} ; reagent
   org.pinkgorilla/ui-site {:mvn/version "0.0.31"}; ipsum
   org.pinkgorilla/ui-dialog-keybindings {:mvn/version "0.1.10"} ; notification
+  org.pinkgorilla/ui-pprint-frisk {:mvn/version "0.6.564"} ; pprint is no longer contained there.
   }
 
  :aliases

@@ -133,19 +133,26 @@
 
 ;node. getConfig():
 
-(defn create-model [{:keys [model options]
-                     :or {options {}}}]
+(defn create-model [{:keys [model options edit]
+                     :or {options {}
+                          edit {}
+                          }}]
   (let [layout (clojure.core/atom nil)
         model-a (clojure.core/atom nil)
         state {:layout layout ; react-ref goes here
                :model model
                :model-a model-a
                :option-a (reagent.core/atom options)
-               :edit-a (reagent.core/atom {})
+               :edit-a (reagent.core/atom edit)
                :selected-id-a (reagent.core/atom nil)
                }]
     state
     ))
+
+(defn get-data [{:keys [model-a edit-a option-a]}]
+  {:model (js->clj (.toJson ^Model @model-a) )
+   :options @option-a
+   :edit @edit-a})
 
 (defn layout
   "The model is tree of Node objects that define the structure of the layout.
