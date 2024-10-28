@@ -7,7 +7,9 @@
 (def model
   {:global {:tabEnableRename true
             :tabEnableClose true
-            :tabEnableFloat true
+            :tabEnableFloat true 
+            :splitterEnableHandle true
+            :tabEnablePopout true
             :tabSetEnableActiveIcon true}
    :layout {:type "row"
             :weight 100
@@ -17,6 +19,7 @@
                                     :name "One"
                                     :component "panel"
                                     :enableClose false,
+                                    :id "one"
                                     :icon "/r/images/bar_chart.svg"}]}
                        {:type "tabset"
                         :weight 100
@@ -32,23 +35,26 @@
                           :name "two"
                           :component "panel"
                           :icon "/r/images/article.svg"
-                          :id "100"}
+                          :id "two"}
                          {:type "tab"
                           :name "3"
-                          :component "panel"}
+                          :component "panel"
+                          :id "3"
+                          }
                          {:type "tab"
                           :name "5"
-                          :component "panel"}
+                          :component "panel"
+                          :id "5"}
                          {:type "tab"
                           :name "text"
-                          :id "text99"
+                          :id "text"
                           :component "text"}]}]}
    :borders [{:type "border"
               ;:selected 13,
               :size 350
               :location "left"
               :children [{:type "tab"
-                          :id "#1"
+                          :id "options"
                           :name "Options"
                           :component "option"
                           :enableClose false}]}]})
@@ -56,11 +62,11 @@
 (def m (create-model
         {:model model
          :options {"wikipedia1" "https://en.wikipedia.org/wiki/Main_Page"
-                   "100" 10000
-                   "text99" "hello\r\nI come from the options!"
+                   "3" 10000
+                   "text" "hello\r\nI come from the options!"
                    }}))
 
-(set! (.-model js/window) m)
+; (set! (.-model js/window) m)
 
 (defn flex-layout-page [{:keys [route-params query-params handler] :as route}]
   [:div.h-screen.w-screen

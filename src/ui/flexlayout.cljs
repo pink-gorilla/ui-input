@@ -2,6 +2,7 @@
   (:require
    [reagent.core :as r]
    [reagent.ratom :as ratom]
+   ["react" :as react]
    ["flexlayout-react" :refer [Layout Model Actions  TabSetNode]]
    [options.core :as oui]))
 
@@ -82,8 +83,8 @@
                     ;   action
     action))
 
-(defn add-node [{:keys [layout option-a edit-a model-a]} {:keys [id options edit] :as node}]
-  (when (and layout @layout)
+(defn add-node [{:keys [layout-a option-a edit-a model-a]} {:keys [id options edit] :as node}]
+  (when (and layout-a @layout-a)
     (println "new node: " id " options: " options)
     (when (and options id)
       (when edit
@@ -94,12 +95,12 @@
                      (.getFirstTabSet  ^Model @model-a))]
       #_(.addTabToActiveTabSet
          ^Model
-         @layout
+         @layout-a
          (clj->js node))
 
       (.addTabToTabSet
        ^Model
-       @layout
+       @layout-a
        (.getId ^TabSetNode tabset)
        (clj->js node)))))
 
@@ -113,27 +114,61 @@
 (defn component-panel [comp options-a]
   [comp @options-a])
 
+(defn cp2 [{:keys [comp options-a]}]
+  (r/as-element [component-panel comp options-a]))
+
 (defn make-factory [{:keys [option-a] :as state}]
+  (fn [^js node]
+    (react/createElement
+     (let [#_{:keys [id component]}
+           #_(react/useMemo
+              (fn []
+                {:id (.getId node)
+                 :component (.getComponent node)})
+              node)
+           id (.getId node)
+           component (.getComponent node)
+           comp (component-ui {:id id
+                               :component component
+                               :state state})
+           options-a (subscribe-options option-a id)]
+                      ;(println "comp: " comp)
+       (partial cp2 {:comp comp
+                     :options-a options-a}))
+     (clj->js {})
+     (clj->js nil))))
+
+(defn make-factory2 [{:keys [option-a] :as state}]
+  ; this works, however, the reactMemo hook is not wrapped around the react component,
+  ; and therefore leads to frequent re-rendering of compoennts
   (fn [^js node]
     (let [cell-id (.getId node)
           component (.getComponent node)
           comp (component-ui {:id cell-id
                               :component component
                               :state state})
-          options-for-component (subscribe-options option-a cell-id)]
-      (println "creating component " component " id: " cell-id)
-      (r/as-element [component-panel comp options-for-component])
-      ;(r/as-element (component-panel comp options-for-component))
-      )))
+          options-for-component (subscribe-options option-a cell-id)
+          _ (println "creating id: " cell-id " component: " component)
+          ; as-element does not wrap reagent wrappers (cannot use ratom)
+          ; :> also calls as-element but also does converstion of parameters to js
+          react-el (r/as-element [component-panel comp options-for-component])]
+      ;(cp2 comp options-for-component)
+      react-el)))
+
+; let welcome = React.createElement(
+;  "h1",
+;{ style: { color: "red" } },
+;  `Welcome to react world`
+;);
 
 ;node. getConfig():
 
 (defn create-model [{:keys [model options edit]
                      :or {options {}
                           edit {}}}]
-  (let [layout (clojure.core/atom nil)
+  (let [layout-a (clojure.core/atom nil)
         model-a (clojure.core/atom nil)
-        state {:layout layout ; react-ref goes here
+        state {:layout-a layout-a ; react-ref goes here
                :model model
                :model-a model-a
                :option-a (reagent.core/atom options)
@@ -149,17 +184,26 @@
 (defn layout
   "The model is tree of Node objects that define the structure of the layout.
    The factory is a function that takes a Node object and returns a React componen"
-  [{:keys [layout model] :as state}]
+  [{:keys [layout-a model] :as state}]
   (let [model (-> model
                   clj->js
-                  (Model.fromJson))]
+                  (Model.fromJson))
+        factory (make-factory state)]
+    (println "creating layout ..")
     (reset! (:model-a state) model)
     [:> Layout {:model model
-                :ref (fn [el]
-                       (reset! layout el))
-                :factory (make-factory state)
+                :factory factory
                 :titleFactory title-factory
-                :onAction (make-handle-action state)}]))
+                :onAction (make-handle-action state)
+                :ref (fn [el]
+                       (reset! layout-a el))}]
+
+    #_[:f> Layout {:model model
+                   :factory factory
+                   :titleFactory title-factory
+                   :onAction (make-handle-action state)
+                   :ref (fn [el]
+                          (reset! layout-a el))}]))
 
 ;; DEFAULT UI COMPONENTS
 
