@@ -259,13 +259,21 @@
         selected-edit-a (subscribe-selected-edit state)
         option-a (:option-a state)]
     (fn [options]
-      [:div.bg-blue-500.w-full.h-full
-       [:p "option-ui"]
-       [:br]
-       [:p "selected cell: " @selected-id-a]
-       [:br]
+      [:div.bg-blue-300
+       {:max-height "100%"
+        :max-width "100%"
+        :min-height "100%"
+        :min-width "100%"
+        :height "100%"
+        :width "100%"}
+       [:div
+        [:p "option-ui"]
+        [:br]
+        [:p "selected cell: " @selected-id-a]
+        [:br]]
+
        (if (and @selected-edit-a @selected-options-a)
-         [oui/options-ui2 {:class "options-label-left"
+         [oui/options-ui2 {:class "options-label-left w-full h-full"
                            :edit @selected-edit-a
                            :state selected-options-a
                            :set-fn (fn [path v]
